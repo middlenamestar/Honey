@@ -1,0 +1,54 @@
+/* Extend to fit entirety of page */
+html {
+  margin: 0;
+  padding: 0;
+}
+
+
+* {
+  font-family: /* IDK */
+}
+
+body {
+  text-align: center;
+}
+
+/* -----------------START HOMEPAGE STYLING----------------- */
+.primaryBtn {
+  color: white;
+  text-transform: uppercase;
+  font-size: large;
+  background: rgb(61, 61, 170); /* make gradient like tinders? */
+  padding: 15px 30px;
+  border-radius: 25px;
+}
+
+.primaryBtn {
+  cursor: pointer;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+/* -----------------END HOMEPAGE STYLING----------------- */
+
+
+/* -----------------START NAVBAR STYLING----------------- */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .logo-container {
+  width: 170px;
+  margin: 15px;
+}
+
+nav .logo-container .logo {
+  width: 100%;
+}
+/* -----------------END NAVBAR STYLING----------------- */
