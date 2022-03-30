@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// Page Importing
+import Home from "./pages/Home";
+import Dash from "./pages/Dash";
+import Signup from "./pages/Signup";
 
-function App() {
+// Importing Routes
+import { BrowserRouter, Routes, Route } from 'react-router-dom' //react npm plug in to control routes
+
+// import './App.css';  // Currently using one page to style so this isn't needed, can reimplement as we change to multiple styling pages.
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes> {/* Routes within the router, each new page is added below following this format */}
+      <Route path='/' element= {<Home/>}/>
+      <Route path='/dash' element= {<Dash/>}/>
+      <Route path='/signup' element= {<Signup/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
