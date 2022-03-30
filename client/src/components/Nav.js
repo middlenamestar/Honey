@@ -1,6 +1,21 @@
-const Nav = () => {
+// Store logo images in images folder, then import them here
+// Tinder uses two logos, a plain logo for the larger page, and a color logo for the minizimed/mobile layout
+
+import smallLogo from '../images/colorLogoPlaceholder.jpg'
+import bigLogo from '../images/plainLogoPlaceholder.jpg'
+
+const Nav = ({ mobile, authToken }) => {
+    
+    
     return (
-        <div>Nav</div>
+        <nav>
+            <div className="logo-container">
+                <img className="logo" src={mobile ? smallLogo : bigLogo} alt="Company Logo" />
+                
+            </div>
+            {!authToken && <button className="navBtn">Log in</button>}
+        </nav>
+        
     ) 
 }
 
