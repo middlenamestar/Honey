@@ -13,7 +13,7 @@ const Nav = ({ mobile, authToken }) => {
                 <img className="logo" src={mobile ? smallLogo : bigLogo} alt="Company Logo" />
                 
             </div>
-            {!authToken && <button className="navBtn">Log in</button>}
+            {!authToken && !mobile  && <button className="navBtn">Log in</button>}
         </nav>
         
     ) 
