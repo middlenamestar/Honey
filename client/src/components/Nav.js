@@ -4,7 +4,11 @@
 import smallLogo from '../images/colorLogoPlaceholder.jpg'
 import bigLogo from '../images/plainLogoPlaceholder.jpg'
 
-const Nav = ({ mobile, authToken }) => {
+const Nav = ({ mobile, authToken, setShowBuild, showBuild }) => {
+    
+    const handleClick = () => {
+        setShowBuild(true)
+    }
     
     
     return (
@@ -13,7 +17,11 @@ const Nav = ({ mobile, authToken }) => {
                 <img className="logo" src={mobile ? smallLogo : bigLogo} alt="Company Logo" />
                 
             </div>
-            {!authToken && !mobile  && <button className="navBtn">Log in</button>}
+            {!authToken && !mobile  && <button 
+            className="navBtn" 
+            onClick={handleClick}
+            disabled={showBuild}
+            >Log in</button>}
         </nav>
         
     ) 
