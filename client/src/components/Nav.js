@@ -4,10 +4,11 @@
 import smallLogo from '../images/colorLogoPlaceholder.jpg'
 import bigLogo from '../images/plainLogoPlaceholder.jpg'
 
-const Nav = ({ mobile, authToken, setShowBuild, showBuild }) => {
+const Nav = ({ mobile, authToken, setShowBuild, showBuild, setIsSignUp }) => {
     
     const handleClick = () => {
         setShowBuild(true)
+        setIsSignUp(false)
     }
     
     

@@ -128,3 +128,14 @@ nav .navBtn:disabled {
   border: solid 2px rbg(121,119,119);
   margin: 6px
 }
+
+.authBuild form {
+  display: flex;
+  flex-direction: column;
+}
+.authBuild input[type=email]
+.authBuild input[type=password] {
+  padding: 8px;
+  margin: 8px;
+  font-size: 20px;
+}
