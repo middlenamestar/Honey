@@ -60,12 +60,12 @@ const userSchema = new Schema(
                 ref: 'Post'
             }
         ],
-        messages: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Message'
-            }
-        ],
+        // messages: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Message'
+        //     }
+        // ],
         matches: [
             {
                 type: Schema.Types.ObjectId,
