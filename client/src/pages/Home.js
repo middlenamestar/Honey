@@ -9,6 +9,7 @@ const Home = () => {
     }
     return (
         <div className="overlay">
+            {/* WEB API dynamic size rendering*/}
         <Nav mobile={false} authToken={authToken}/>
         <div className="home">
             <h1>Tag Line Here</h1>
