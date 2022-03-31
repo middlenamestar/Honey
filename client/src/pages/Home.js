@@ -4,16 +4,21 @@ import AuthBuild from "../components/AuthBuild"
 
 const Home = () => {
     const [showBuild, setShowBuild] = useState(false)
+    const [isSignUp, setIsSignUp] = useState(true)
+    
     const authToken = false //building with dummy authToken, change true/false affect button text/functionality?
 
     const handleClick = () => {
         console.log("You've clicked")
         setShowBuild(true)
+        setIsSignUp(true)
     }
     return (
         <div className="overlay">
             {/* WEB API dynamic size rendering*/}
-            <Nav mobile={false} authToken={authToken} setShowBuild={setShowBuild} showBuild={showBuild}/>
+            <Nav mobile={false}
+            authToken={authToken} setShowBuild={setShowBuild} showBuild={showBuild} setIsSignUp={setIsSignUp}
+            />
             <div className="home">
                 <h1>Tag Line Here</h1>
                 <button className="primaryBtn" onClick={handleClick}>
@@ -21,7 +26,7 @@ const Home = () => {
                 </button>
 
                 {showBuild && (
-                    <AuthBuild setShowBuild={setShowBuild} />
+                    <AuthBuild setShowBuild={setShowBuild} setIsSignUp={setIsSignUp} isSignUp={isSignUp}/>
                 )}
 
             </div>
