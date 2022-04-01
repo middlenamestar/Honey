@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import { useHistory } from 'react'
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 const Success = () => {
+    const { width, height } = useWindowSize()
+    useEffect(() => {
+        setTimeout(()=>{
+            window.location = `http://localhost:3000/dash`
+        },8000);
+      }, []);
   return (
-    <div>Thank you so much for your support</div>
+    <>
+    <Confetti width={width}  height={height}/>
+    <h1>Thank you so much for your support</h1>
+    </>
   )
 }
 
