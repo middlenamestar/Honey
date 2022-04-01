@@ -17,11 +17,11 @@ const Home = () => {
         <div className="overlay">
             {/* WEB API dynamic size rendering*/}
             <Nav mobile={false}
-            authToken={authToken} setShowBuild={setShowBuild} showBuild={showBuild} setIsSignUp={setIsSignUp}
+            setShowBuild={setShowBuild} showBuild={showBuild} setIsSignUp={setIsSignUp}
             />
             <div className="home">
-                <h1>Tag Line Here</h1>
-                <button className="primaryBtn" onClick={handleClick}>
+                <h1 className="text-center primaryTagLine">Tag Line Here</h1>
+                <button className="primaryBtn" onClick={handleClick} disabled={showBuild}>
                     {authToken ? 'Log Out' : 'Create Account'} {/* if user is logged in render logout button, else render Create Account button*/}
                 </button>
 
