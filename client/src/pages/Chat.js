@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
-import ScrollToBottom from "react-scroll-to-bottom";
+//import ScrollToBottom from "react-scroll-to-bottom";
+//import ReactScrollableFeed from 'react-scrollable-feed'
+//import { scroller } from "react-scroll";
+
 
 const Chat = ({ socket, username, room }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+
+  const scrollToBottom = () => {
+    messageList.scrollTop = messageList.scrollHeight
+  }
+  console.log(scrollToBottom)
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -43,7 +51,7 @@ const Chat = ({ socket, username, room }) => {
         <p>Live Chat</p>
       </div>
       <div className="chat-body">
-        <ScrollToBottom className="message-container">
+        <div className="message-container" >
           {messageList.map((messageContent) => {
             return (
               <div
@@ -55,15 +63,15 @@ const Chat = ({ socket, username, room }) => {
                   <div className="message-content">
                     <p>{messageContent.message}</p>
                   </div>
-                  <div className="message-meta">
+                  <div className="message-data">
                     <p id="time">{messageContent.timeShown}</p>
                     <p id="author">{messageContent.author}</p>
                   </div>
                 </div>
               </div>
             );
-          })}
-        </ScrollToBottom>
+          }, scrollToBottom())}
+        </div>
       </div>
       <div className="chat-footer">
         <input
@@ -75,6 +83,7 @@ const Chat = ({ socket, username, room }) => {
           }}
           onKeyPress={(event) => {
             event.key === "Enter" && sendMessage();
+            
           }}
         />
         <button onClick={sendMessage}>&#9658;</button>
@@ -82,5 +91,6 @@ const Chat = ({ socket, username, room }) => {
     </div>
   );
 }
+
 
 export default Chat;

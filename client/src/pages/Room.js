@@ -20,11 +20,13 @@ const Room = () => {
     };
 
     return (
-        <div className="App">
+        <div className="Room">
             {!showChat ? (
-                <div className="joinChatContainer">
-                    <h3>Join A Chat</h3>
+                <div className="joinChat">
+                    <h3>Join Chatroom</h3>
                     <input
+                        className="form-control joinChatExtra"
+                        id="exampleFormControlInput1"
                         type="text"
                         placeholder="Username Here"
                         onChange={(event) => {
@@ -32,13 +34,15 @@ const Room = () => {
                         }}
                     />
                     <input
+                        className="form-control joinChatExtra"
+                        id="exampleFormControlInput1"
                         type="text"
                         placeholder="Room ID #"
                         onChange={(event) => {
                             setRoom(event.target.value);
                         }}
                     />
-                    <button onClick={joinRoom}>Join A Room</button>
+                    <button className="joinChatExtra btn" onClick={joinRoom}>Join Room</button>
                 </div>
             ) : (
                 <Chat socket={socket} username={username} room={room}/>
