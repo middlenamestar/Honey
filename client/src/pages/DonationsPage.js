@@ -1,8 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component,  useState } from 'react'
 
 const  DonationsPage = () =>{
-
-const handleFormSubmit = () => {
+  const [count, setCount] = useState(1);
+  // Helper function to handle when the user clicks increment
+  const handleIncrement = () => {
+    setCount(num => Math.min(100, num + 1));
+  };
+  // Helper function to handle when the user clicks decrement
+  const handleDecrement = () => {
+    setCount(num => Math.max(1, num - 1));
+  };
+  const handleFormSubmit = () => {
     fetch("http://localhost:3001/create-checkout-session", {
       method: "POST",
       headers: {
@@ -10,7 +18,7 @@ const handleFormSubmit = () => {
       },
       body: JSON.stringify({
         items: [
-          { id: 1, quantity: 1 },
+          { id: 1, quantity: count },
         ],
       }),
     })
@@ -28,8 +36,23 @@ const handleFormSubmit = () => {
     return (
       <div>
           <h1>Buy us a Coffee Maybe? (Donate $5)</h1>
-          
-          <button onClick={handleFormSubmit}>Yes, I would Like to buy you guys a Coffee</button>
+
+          <h2>Number of Coffees:{count}</h2>
+          <button
+        type="button"
+        className="btn btn-primary"
+        onClick={handleDecrement}
+      >Decrement</button>
+          <button
+        type="button"
+        className="btn btn-primary"
+        onClick={handleIncrement}
+      >
+        Increment
+      </button>
+
+<hr/>
+          <button onClick={handleFormSubmit}>Yes, I would Like to buy you guys {count} Coffee(s)</button>
           
       </div>
     )
