@@ -35,11 +35,19 @@ body {
   position: fixed;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0, 0.65) 0%,
+    rgba(0,0,0, 0.65) 000%,
     rgba(0,0,0,0) 100%
-  )
+  ), url('images/animeCollage.jpg')
+}
+.primaryBtn:disabled {
+  color: antiquewhite;
+  background-color: rgb(16, 16, 87);
 }
 
+.primaryTagLine {
+  font-size: 100px;
+  color: rgba(244,213,137,255)
+}
 /* -----------------END HOMEPAGE STYLING----------------- */
 
 
@@ -48,14 +56,20 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  /* border: 5px solid red */
 }
 
-nav .logo-container {
+nav .logoNavContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+nav .logoContainer {
   width: 170px;
   margin: 15px;
 }
 
-nav .logo-container .logo {
+nav .logoContainer .logo {
   width: 100%;
 }
 
@@ -66,11 +80,30 @@ nav .navBtn {
   padding: 10px 20px;
   border-radius: 15px;
   margin: 10px;
+  justify-self: right;
 }
 
 nav .navBtn:disabled {
   color: antiquewhite;
   background-color: rgb(16, 16, 87);
+}
+
+nav .navItem {
+  display: flex;
+}
+
+nav .navBar {
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  padding-left: 0px;
+}
+
+nav .navItem a{
+  text-decoration: none;
+  color: rgba(244,213,137,255);
+  /* border: 1px solid red; */
+  padding: 8px;
 }
 /* -----------------END NAVBAR STYLING----------------- */
 
@@ -139,3 +172,64 @@ nav .navBtn:disabled {
   margin: 8px;
   font-size: 20px;
 }
+
+/* -----------------END AUTHBUILD STYLING----------------- */
+
+/* -----------------START SIGNUP PAGE STYLING----------------- */
+
+.signup{
+  border-top: solid 1px lightgrey;
+}
+
+.signup form {
+  display: flex;
+  justify-content: center;
+}
+
+.signup form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 33%;
+  text-align: start;
+}
+
+.signup form input {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: solid 2px rgb(211, 202, 202);
+  border-radius: 15px;
+}
+
+.signup form input[type='number'] {
+  width: 10%;
+}
+
+.signup form input::-webkit-outer-spin-button,
+.signup form input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+.signup form .birthdayInputContainer {
+  display: flex;
+  flex-direction: row;
+}
+.signup form .birthdayInputContainer input {
+  margin-right: 10px;
+}
+
+.signup form input[type='submit']:hover {
+  background-color:rgba(244,213,137,255) ;
+}
+
+.signup form input[type='submit']:active {
+  background-color:rgba(161,48,111,255) ;
+}
+
+.signup form .photoContainer img{
+  width: 100%
+}
+
+/* -----------------END SIGNUP PAGE STYLING----------------- */

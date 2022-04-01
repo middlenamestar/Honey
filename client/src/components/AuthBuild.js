@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AuthBuild = ({setShowBuild, setIsSignUp, isSignUp }) => {
+const AuthBuild = ({setShowBuild, isSignUp }) => {
     const [ email, setEmail ] = useState(null)
     const [ password, setPassword ] = useState(null)
     const [ validatePassword, setValidatePassword ] = useState(null)
@@ -56,7 +56,7 @@ const AuthBuild = ({setShowBuild, setIsSignUp, isSignUp }) => {
                     onChange={(event) => setPassword(event.target.value)}
                 />      
                 {isSignUp && <input
-                    type='passwordValidate'
+                    type='password'
                     id='passwordValidate'
                     name='passwordValidate'
                     placeholder="Confirm Password"
