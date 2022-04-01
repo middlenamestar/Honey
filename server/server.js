@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -9,7 +10,11 @@ const db = require('./config/connection');
 const http = require("http");
 const cors = require("cors")
 const {Server} = require("socket.io")
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+)
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -40,6 +45,57 @@ io.on('connection', (socket) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
+
+//Stripe Tings
+
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+const storeItems = new Map([
+  [1, {priceinCents:500, name: "$5 Dollar Donation"}],
+])
+
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "payment",
+      line_items: req.body.items.map(item => {
+        const storeItem = storeItems.get(item.id)
+        return {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: storeItem.name,
+            },
+            unit_amount: storeItem.priceinCents,
+          },
+          quantity: item.quantity,
+        }
+      }),
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.SERVER_URL}/cancel`,
+    })
+    res.json({ url: session.url })
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+    console.log(e.message)
+  }
+})
+
+app.get("/cancel", (req,res) => { 
+  res.redirect("http://localhost:3000/donationsPage")
+})
+
+//------------------------------------------- End of Strip tings -------------------------------------//
+
+
+
+
+
+
+
+
+
+
 
 // If this is production allow static files to be served from the build folder
 if (process.env.NODE_ENV === 'production') {
