@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+const styles = {
+    pic: {
+        maxWidth: '300px'
+    }
+};
+
 class ProfilePic extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +15,9 @@ class ProfilePic extends Component {
     componentDidMount() {
         var myWidget = window.cloudinary.createUploadWidget(
             {
+                // cloud name is like my "database"
               cloudName: "df60zox38",
+                // upload preset is like the "folder"/media library everything gets stored in.
               uploadPreset: "adbsipsa"
             },
             (error, result) => {
@@ -21,6 +29,7 @@ class ProfilePic extends Component {
                 }
               }
             );
+            // this is like a standard code to be able to open the upload widget.
             document.getElementById("upload_widget").addEventListener(
                 "click",
                 function () {
@@ -31,12 +40,23 @@ class ProfilePic extends Component {
             }
 
     render() {
+        // if imageurl (aka. if user uploads an image) then render the image. if not, the img tag will not appear.
+        const imageUrl = this.state.imageUrl;
+        let imageRender;
+        if (imageUrl) {
+            imageRender = <img src={this.state.imageUrl} alt="profile pic" style={styles.pic}/>
+        }
+
         return (
             <>
-                <button id="upload_widget" className="cloudinary-button">
-                upload*
-                </button>
-                <img src={this.state.imageUrl} alt="profile pic" />
+                <div>
+                    {imageRender}
+                </div>
+                <div>
+                    <button id="upload_widget" className="">
+                    upload
+                    </button>
+                </div>
             </>
         );
     }
