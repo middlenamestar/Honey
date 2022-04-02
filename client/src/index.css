@@ -175,64 +175,6 @@ nav .navItem a{
 
 /* -----------------END AUTHBUILD STYLING----------------- */
 
-/* -----------------START SIGNUP PAGE STYLING----------------- */
-
-.signup{
-  border-top: solid 1px lightgrey;
-}
-
-.signup form {
-  display: flex;
-  justify-content: center;
-}
-
-.signup form section {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  width: 33%;
-  text-align: start;
-}
-
-.signup form input {
-  padding: 15px 30px;
-  margin: 10px 0;
-  font-size: 15px;
-  border: solid 2px rgb(211, 202, 202);
-  border-radius: 15px;
-}
-
-.signup form input[type='number'] {
-  width: 10%;
-}
-
-.signup form input::-webkit-outer-spin-button,
-.signup form input::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
-}
-
-.signup form .birthdayInputContainer {
-  display: flex;
-  flex-direction: row;
-}
-.signup form .birthdayInputContainer input {
-  margin-right: 10px;
-}
-
-.signup form input[type='submit']:hover {
-  background-color:rgba(244,213,137,255) ;
-}
-
-.signup form input[type='submit']:active {
-  background-color:rgba(161,48,111,255) ;
-}
-
-.signup form .photoContainer img{
-  width: 100%
-}
-
-/* -----------------END SIGNUP PAGE STYLING----------------- */
 
 /* -----------------START CHAT STYLING----------------- */
 .Room {
