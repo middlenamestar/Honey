@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import Nav from '../components/Nav'
+import { useState } from 'react';
+import Nav from '../components/Nav';
+import ProfilePic from '../components/uploadPic';
 
 const Signup = () => {
     
@@ -111,25 +112,23 @@ const Signup = () => {
                     </section> 
                           
                     <section>                 
-                        {/* CLOUDINARY SET UP */}
-                        <label htmlFor='imageUrl'>Profile Picture </label>
-                        <input
+                        <p>PROFILE PIX.</p>
+                        <ProfilePic/>
+                        {/* <input
                         type='url'
                         name='imageUrl'
                         id='imageUrl'
                         onChange={handleChange}
                         required={true}
-                        />
-                        <div className='photoContainer'>
-                            <img src={formData.imageUrl} alt='Profile Picture'/>
-                        </div>
-                                                                                               
+                        /> */}
+                        {/* <div className='photoContainer'>
+                            <img src={formData.imageUrl} alt='profile pic'/>
+                        </div> */}
                     </section>
                 </form>
-            </div>          
-   
+            </div>
         </>
     ) 
 }
 
-export default Signup
+export default Signup;
