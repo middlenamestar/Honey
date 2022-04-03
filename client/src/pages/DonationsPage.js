@@ -1,4 +1,5 @@
 import React, { Component,  useState } from 'react'
+import Nav from '../components/Nav';
 
 const  DonationsPage = () =>{
   const [count, setCount] = useState(1);
@@ -35,6 +36,7 @@ const  DonationsPage = () =>{
   }
     return (
       <div>
+        <Nav/>
           <h1>Buy us a Coffee Maybe? (Donate $5)</h1>
 
           <h2>Number of Coffees:{count}</h2>

@@ -1,34 +1,46 @@
 import { useState } from "react"
-
+import axios from "axios"
+import {useNavigate} from 'react-router-dom'
+import {useCookies} from 'react-cookie'
 const AuthBuild = ({setShowBuild, isSignUp }) => {
     const [ email, setEmail ] = useState(null)
     const [ password, setPassword ] = useState(null)
     const [ validatePassword, setValidatePassword ] = useState(null)
     const [ error, setError ] = useState(null)
-
+    const [ cookies, setCookie, removeCookie] = useCookies('user')
     // console.log(email, password, validatePassword)
-
+    let navigate =useNavigate()
     
     const handleClick = () => {
         setShowBuild(false)
     }
 
-    // FUTURE DEVELOPMENT GOOGLE LOG IN
-    // const handleSubmitGoogle = (event) => {
-    //     event.preventDefault()
-    //     console.log("click")
-    //     // CHRIS' AUTH AREA
-    // }
     
     
-    const handleSubmitLocal = (event) => {
+    const handleSubmitLocal = async (event) => {
         event.preventDefault()
         console.log("click")
         try {
             if(isSignUp && (password !== validatePassword)) {
                 setError("Passwords don't match, please try again")
+                return
             }
-            console.log('make a post req to DB')
+            const response = await axios.post(`http://localhost:3001/${isSignUp? 'signup': 'login'}` , {email, password})
+
+            setCookie('UserId', response.data.userId)
+            setCookie('AuthToken', response.data.token)
+            
+            const success =response.status === 201;
+
+            if(success && isSignUp){
+                navigate('/signup')
+                window.location.reload()
+            }
+            else if(success && !isSignUp){
+                navigate('/dash')
+                window.location.reload()
+            }
+
         } catch (error) {
             console.log(error)
         }

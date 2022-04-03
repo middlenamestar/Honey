@@ -1,12 +1,14 @@
 import Nav from "../components/Nav"
 import { useState } from 'react'
 import AuthBuild from "../components/AuthBuild"
-
+import { useCookies } from "react-cookie"
 const Home = () => {
     const [showBuild, setShowBuild] = useState(false)
     const [isSignUp, setIsSignUp] = useState(true)
-    
-    const authToken = false //building with dummy authToken, change true/false affect button text/functionality?
+    const [cookies, setCookie, removeCookie] =useCookies(['user'])
+
+
+    const authToken = cookies.authToken //building with dummy authToken, change true/false affect button text/functionality?
 
     const handleClick = () => {
         console.log("You've clicked")
@@ -17,7 +19,9 @@ const Home = () => {
         <div className="overlay">
             {/* WEB API dynamic size rendering*/}
             <Nav mobile={false}
-            setShowBuild={setShowBuild} showBuild={showBuild} setIsSignUp={setIsSignUp}
+                 setShowBuild={setShowBuild} 
+                 showBuild={showBuild} 
+                 setIsSignUp={setIsSignUp}
             />
             <div className="home">
                 <h1 className="text-center primaryTagLine">Tag Line Here</h1>

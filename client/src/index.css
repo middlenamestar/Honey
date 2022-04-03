@@ -123,32 +123,9 @@ nav .navItem a{
 
 .authBuild .closeText {
   float: right;
-}
-
-.googleBtn {
-  /* color: white;
-  background: rgb(61, 61, 170);
-  padding: 5px;
-  width: 50%;
-  border-radius: 3px;
-  font-size: 14px;
-  font-weight: 700;
-  align-items: center;
-  text-decoration: none; */
-  margin-left: auto;
-  margin-right: auto;
-  /* width: 300px; */
-  height: 50px;
-  background: rgb(61, 61, 170);
-  border-radius: 15px;
-  position: relative;
-  color: white;
-  font-family: "Poppins", sans-serif;
-  font-size: 13px;
   cursor: pointer;
-  margin: 10px;
-
 }
+
 
 .secondaryBtn {
   color:white;
@@ -157,9 +134,13 @@ nav .navItem a{
   font-size: 15px;
   text-transform: capitalize;
   padding: 12px 30px;
-  border-radius: 15px;
+  border-radius: 30px;
   border: solid 2px rbg(121,119,119);
   margin: 6px
+}
+.secondaryBtn:hover{
+  color: whitesmoke;
+  border: solid 2px rbg(122,118,118);
 }
 
 .authBuild form {

@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 //import Nav from "../components/Nav"
 import io from "socket.io-client"
+import Nav from "../components/Nav"
 import Chat from "./Chat"
 
 
@@ -20,6 +21,8 @@ const Room = () => {
     };
 
     return (
+        <>
+        <Nav/>
         <div className="Room">
             {!showChat ? (
                 <div className="joinChat">
@@ -48,6 +51,7 @@ const Room = () => {
                 <Chat socket={socket} username={username} room={room}/>
             )}
         </div>
+        </>
     );
 }
 
