@@ -26,6 +26,24 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
+  logInUser(req, res) {
+   return User.findOne({ email: req.body.email})
+        .select("-__v")
+        .populate("matches")
+        .populate("posts")
+        .then((user) =>{
+          if(!user){
+            res.status(404).json({ message: "No user with that ID" })
+          }else{return user}
+        })
+        
+  },
+
+
+
+
+
+
   checkExist(email) {
   return  User.findOne({ email: email })
       .select("-__v")
@@ -49,28 +67,34 @@ module.exports = {
   },
 
   signUpUser(data) {
-    User.create(data)
+    return User.create(data)
       .then((user) => user)
       .catch((err) => {
         console.log(err);
       });
   },
   // update a user - not sure if this is something we would need?
-//   updateUser(req, res) {
-//     //   console.log(req.params)
-//     //   console.log(req.body)
-//     User.findOneAndUpdate(
-//       { _id: req.params.userId },
-//       { $set: req.body },
-//       { runValidators: true, new: true }
-//     )
-//       .then((user) =>
-//         !user
-//           ? res.status(404).json({ message: "No user with that ID" })
-//           : res.json(user)
-//       )
-//       .catch((err) => res.status(500).json(err));
-//   },
+  onBoarding(req, res, formData) {
+    //   console.log(req.params)
+    //   console.log(req.body)
+  return  User.findOneAndUpdate(
+      {ManmadeID:formData.user_id },
+      { $set: {
+        username: formData.username,
+        dobDay: formData.bdayDay,
+        dobMonth: formData.bdayMo,
+        dobYear:formData.bdayYear,
+        bio: formData.bio
+      } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>{
+        if(!user){
+          res.status(404).json({ message: "No user with that ID" })
+        }else{res.send(user)}
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 
   // delete a user
   deleteUser(req, res) {

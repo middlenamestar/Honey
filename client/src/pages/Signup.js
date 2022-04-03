@@ -2,7 +2,9 @@ import { useState } from 'react';
 import Nav from '../components/Nav';
 import ProfilePic from '../components/uploadPic';
 import '../styles/signup.css';
-
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const styles = {
     txtAreaResize: {
         resize: 'none'
@@ -10,8 +12,9 @@ const styles = {
 };
 
 const Signup = () => {
-    
+    const [ cookies, setCookie, removeCookie] = useCookies('user')
     const [formData, setFormData] = useState({
+        user_id:cookies.UserId,
         username: '',
         malUsername: '',
         bdayMo: '',
@@ -22,9 +25,23 @@ const Signup = () => {
         // imageUrl: '',
         matches: []
     })
-    
-    const handleSubmit = () => {
+
+    let navigate =useNavigate()
+
+    const handleSubmit = async (e) => {
         console.log('submit')
+        e.preventDefault()
+        try{
+          const response =  await axios.put('http://localhost:3001/user',{formData})
+
+          const success = response.status === 200
+          if (success)
+            {
+                navigate('/dash')
+            }
+        }catch(err){
+            console.log(err)
+        }
     }
     
     const handleChange = (event) => {

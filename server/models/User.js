@@ -9,14 +9,6 @@ const userSchema = new Schema(
             required: true,
             trim: true //removing white space
         },
-        firstName: {
-            type: String,
-            trim: true //removing white space
-        },
-        lastName: {
-            type: String,
-            trim: true //removing white space
-        },
         username: {
             type: String,
             unique: true,

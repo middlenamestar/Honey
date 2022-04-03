@@ -1,12 +1,13 @@
 import { useState } from "react"
 import axios from "axios"
 import {useNavigate} from 'react-router-dom'
+import {useCookies} from 'react-cookie'
 const AuthBuild = ({setShowBuild, isSignUp }) => {
     const [ email, setEmail ] = useState(null)
     const [ password, setPassword ] = useState(null)
     const [ validatePassword, setValidatePassword ] = useState(null)
     const [ error, setError ] = useState(null)
-
+    const [ cookies, setCookie, removeCookie] = useCookies('user')
     // console.log(email, password, validatePassword)
     let navigate =useNavigate()
     
@@ -24,11 +25,18 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
                 setError("Passwords don't match, please try again")
                 return
             }
-            const response = await axios.post('http://localhost:3001/signup' , {email, password})
-            console.log(response)
-            const success =response.status === 201
-            if(success){
+            const response = await axios.post(`http://localhost:3001/${isSignUp? 'signup': 'login'}` , {email, password})
+
+            setCookie('UserId', response.data.userId)
+            setCookie('AuthToken', response.data.token)
+            
+            const success =response.status === 201;
+
+            if(success && isSignUp){
                 navigate('/signup')
+            }
+            else if(success && !isSignUp){
+                navigate('/dash')
             }
 
         } catch (error) {
