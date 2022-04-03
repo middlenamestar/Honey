@@ -167,10 +167,12 @@ nav .navItem a{
   outline: 2px solid #fad37d;
   border-radius: 15px;
   vertical-align: middle;
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
   margin-top: 8%;
-  /* position:relative; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
+  
+  position: relative;
   
   /* box-shadow: 0 0 0 5px hsla(333, 72%, 42%, 0.937); */
 }
@@ -204,8 +206,7 @@ nav .navItem a{
 
 .chat-window {
   height: 400px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  
   /* overflow-anchor: none; */
 }
 
@@ -217,20 +218,19 @@ nav .navItem a{
   scroll-snap-align: end;
 } */
 
-/* .message:last-child {
-  scroll-snap-align: end;
-  overflow-anchor: auto;
-} */
+
 
 .message {
   padding: 10px;
   display: flex;
   height: auto;
+  margin-bottom: 10px;
 }
 
 .message-content {
   overflow-wrap: break-word;
   word-break: break-word;
+  
 }
 
 #you {
@@ -264,11 +264,34 @@ nav .navItem a{
 }
 
 .chat-footer {
-  margin-bottom: 10px;
-  /* position: absolute;
-  bottom: 0;
-  align-items: center;
-  width: 300px; */
+  margin-bottom: 15px;
+  scroll-snap-align: end;
+}
+
+.text-input {
+  height: 25px;
+  width: 200px;
+}
+
+.message-button {
+  background-color: black;
+  color: white;
+  height: 30px;
+}
+
+.room-id {
+  font-size: small;
+  color: grey;
+}
+
+.message-data {
+  display: flex;
+  color: grey;
+  font-size: 12px;
+}
+
+#author {
+  margin-right: 7px
 }
 
 /* -----------------END CHAT STYLING----------------- */
