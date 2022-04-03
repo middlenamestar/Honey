@@ -84,7 +84,7 @@ const Signup = () => {
                                     className='form-control'
                                     placeholder='username'
                                     required={true}
-                                    value={formData.userName}
+                                    value={formData.username}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -99,7 +99,7 @@ const Signup = () => {
                                     className='form-control'
                                     placeholder='myanimelist username'
                                     required={true}
-                                    value={formData.malUserName}
+                                    value={formData.malUsername}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -117,7 +117,7 @@ const Signup = () => {
                                         className='form-control'
                                         placeholder='mm'
                                         required={true}
-                                        value={formData.dobDay}
+                                        value={formData.bdayMo}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -130,7 +130,7 @@ const Signup = () => {
                                         className='form-control'
                                         placeholder='dd'
                                         required={true}
-                                        value={formData.dobMonth}
+                                        value={formData.bdayDay}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -143,7 +143,7 @@ const Signup = () => {
                                         className='form-control'
                                         placeholder='yyyy'
                                         required={true}
-                                        value={formData.dobYear}
+                                        value={formData.bdayYear}
                                         onChange={handleChange}
                                     />
                                 </div>

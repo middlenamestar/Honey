@@ -6,8 +6,10 @@ import Room from "./pages/Room"
 import Chat from "./pages/Chat"
 import DonationsPage from "./pages/DonationsPage.js";
 import Success from "./pages/Success";
+import Profile from "./pages/Profile";
 // Importing Routes
 import { BrowserRouter, Routes, Route } from 'react-router-dom' //react npm plug in to control routes
+
 
 
 
@@ -24,6 +26,7 @@ const App = () => {
       <Route path='/chat' element= {<Chat/>}/>
       <Route path='/DonationsPage' element={<DonationsPage/>}/>
       <Route path='/success' element={<Success/>}/>
+      <Route path='/profile' element={<Profile/>}/>
     </Routes>
     </BrowserRouter>
   );

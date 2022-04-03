@@ -1,5 +1,6 @@
 import { useState } from "react"
-
+import axios from "axios"
+import {useNavigate} from 'react-router-dom'
 const AuthBuild = ({setShowBuild, isSignUp }) => {
     const [ email, setEmail ] = useState(null)
     const [ password, setPassword ] = useState(null)
@@ -7,28 +8,29 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
     const [ error, setError ] = useState(null)
 
     // console.log(email, password, validatePassword)
-
+    let navigate =useNavigate()
     
     const handleClick = () => {
         setShowBuild(false)
     }
 
-    // FUTURE DEVELOPMENT GOOGLE LOG IN
-    // const handleSubmitGoogle = (event) => {
-    //     event.preventDefault()
-    //     console.log("click")
-    //     // CHRIS' AUTH AREA
-    // }
     
     
-    const handleSubmitLocal = (event) => {
+    const handleSubmitLocal = async (event) => {
         event.preventDefault()
         console.log("click")
         try {
             if(isSignUp && (password !== validatePassword)) {
                 setError("Passwords don't match, please try again")
+                return
             }
-            console.log('make a post req to DB')
+            const response = await axios.post('http://localhost:3001/signup' , {email, password})
+            console.log(response)
+            const success =response.status === 201
+            if(success){
+                navigate('/signup')
+            }
+
         } catch (error) {
             console.log(error)
         }

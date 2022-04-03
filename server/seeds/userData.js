@@ -2,6 +2,7 @@ const { User } = require('../models')
 
 const userdata = [
     {
+        ManmadeID:'90c1dce2-9a66-45fb-9cf7-ff349cbe69e4',
         firstName: 'Jack',
         lastName: 'Vent',
         username: 'animelove1',
@@ -17,6 +18,7 @@ const userdata = [
         matches: []
     },
     {
+        ManmadeID:'383dbedc-9bf1-4191-9d9f-6638f5b9c3d2',
         firstName: 'Bennett',
         lastName: 'Garcia',
         username: 'benben',
@@ -32,6 +34,7 @@ const userdata = [
         matches: []
     },
     {
+        ManmadeID:'7b732d12-7e6c-4836-8f67-2c88fb1d8050',
         firstName: 'Minnie',
         lastName: 'Simon',
         username: 'mickanime',
@@ -47,6 +50,7 @@ const userdata = [
         matches: []
     },
     {
+        ManmadeID:'9c3a9b21-6059-466d-b9ad-6ff0440886fa',
         firstName: 'Jan',
         lastName: 'Jackson',
         username: 'jananime',

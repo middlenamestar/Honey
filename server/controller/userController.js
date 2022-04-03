@@ -2,7 +2,7 @@ const { User, Post } = require('../models');
 
 // Not sure how to incorporate messages - added to getSingleUser but not sure if everyone can see it??
 // how is matches getting added? 
-
+let thisisaSwitch
 module.exports = {
   // get all users
   getUsers(req, res) {
@@ -26,6 +26,18 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
+  checkExist(email) {
+  return  User.findOne({ email: email })
+      .select("-__v")
+      .populate("matches")
+      .populate("posts")
+      .then((user) =>{
+        if(user){thisisaSwitch= true}
+          else{thisisaSwitch= false}
+        return thisisaSwitch
+        });
+
+  },
   // create a user
   createUser(req, res) {
     User.create(req.body)
@@ -36,6 +48,13 @@ module.exports = {
       });
   },
 
+  signUpUser(data) {
+    User.create(data)
+      .then((user) => user)
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   // update a user - not sure if this is something we would need?
 //   updateUser(req, res) {
 //     //   console.log(req.params)

@@ -4,20 +4,23 @@ const {Schema, model} = require('mongoose')
 // user schema
 const userSchema = new Schema(
     {
-        firstName: {
+        ManmadeID: {
             type: String,
             required: true,
             trim: true //removing white space
         },
+        firstName: {
+            type: String,
+            trim: true //removing white space
+        },
         lastName: {
             type: String,
-            required: true,
             trim: true //removing white space
         },
         username: {
             type: String,
             unique: true,
-            required: true,
+            sparse:true,
             trim: true //removing white space
         },
         email: {
@@ -32,15 +35,15 @@ const userSchema = new Schema(
         },
         dobDay: {
             type: Number,
-            required: true,
+
         },
         dobMonth: {
             type: String,
-            required: true,
+
         },
         dobYear: {
             type: Number,
-            required: true,
+
         },
         bio: {
             type: String,

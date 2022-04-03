@@ -11,7 +11,7 @@ const Nav = ({ props, mobile, setShowBuild, showBuild, setIsSignUp }) => {
         setIsSignUp(false)
     }
 
-    const authToken = true
+    const authToken = false
     const tabs = ['Dash', 'Room', 'Donations Page']
     
     return (
