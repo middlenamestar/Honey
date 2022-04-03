@@ -1,12 +1,14 @@
 import Nav from "../components/Nav"
 import { useState } from 'react'
 import AuthBuild from "../components/AuthBuild"
-
+import { useCookies } from "react-cookie"
 const Home = () => {
     const [showBuild, setShowBuild] = useState(false)
     const [isSignUp, setIsSignUp] = useState(true)
-    
-    const authToken = true //building with dummy authToken, change true/false affect button text/functionality?
+    const [cookies, setCookie, removeCookie] =useCookies(['user'])
+
+
+    const authToken = cookies.authToken //building with dummy authToken, change true/false affect button text/functionality?
 
     const handleClick = () => {
         console.log("You've clicked")

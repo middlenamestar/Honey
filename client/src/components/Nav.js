@@ -1,19 +1,35 @@
 // Store logo images in images folder, then import them here
 // Tinder uses two logos, a plain logo for the larger page, and a color logo for the minizimed/mobile layout
 
+import { useCookies } from 'react-cookie'
+import {useNavigate} from 'react-router-dom'
 import smallLogo from '../images/colorLogoPlaceholder.jpg'
 import bigLogo from '../images/honeylogo.png'
 
 const Nav = ({ props, mobile, setShowBuild, showBuild, setIsSignUp }) => {
-    
+    const [cookies, setCookie, removeCookie] =useCookies(['user'])
     const handleClick = () => {
         setShowBuild(true)
         setIsSignUp(false)
     }
+    let navigate =useNavigate()
+    const LogOuthandleClick  =() =>{
+        removeCookie('UserId', cookies.UserId)
+        removeCookie('AuthToken', cookies.AuthToken)
+        navigate('/')
+    }
 
-    const authToken = false
+    const authToken = cookies.AuthToken
     const tabs = ['Dash', 'Room', 'Donations Page']
     
+    const loginFlip = () =>{
+        if(!authToken && !mobile){
+            return true
+        } else{
+            return false
+        }
+    }
+
     return (
         <nav>
             <div className='logoNavContainer'>
@@ -34,11 +50,15 @@ const Nav = ({ props, mobile, setShowBuild, showBuild, setIsSignUp }) => {
 
         </ul>
             </div>   
-            {!authToken && !mobile  && <button 
+            {loginFlip()?  <button 
             className="navBtn" 
             onClick={handleClick}
             disabled={showBuild}
-            >Log in</button>}
+            >Log in</button> : <button 
+            className="navBtn" 
+            onClick={LogOuthandleClick}
+            disabled={showBuild}
+            >Log out</button>  }
         </nav>
         
     ) 

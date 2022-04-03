@@ -34,9 +34,11 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
 
             if(success && isSignUp){
                 navigate('/signup')
+                window.location.reload()
             }
             else if(success && !isSignUp){
                 navigate('/dash')
+                window.location.reload()
             }
 
         } catch (error) {

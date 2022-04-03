@@ -5,10 +5,6 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 const {
-    getUsers,
-    getSingleUser,
-    createUser,
-    deleteUser,
     checkExist,
     signUpUser,
     logInUser,
@@ -78,7 +74,6 @@ router.route('/login').post(async(req,res) => {
 
 })
 //---------------------End of LogIn-----------------------------
-
 
 
 
