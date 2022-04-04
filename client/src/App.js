@@ -9,7 +9,7 @@ import Success from "./pages/Success";
 import Profile from "./pages/Profile";
 import { useCookies } from "react-cookie";
 // Importing Routes
-import { Router, Routes, Route } from 'react-router-dom' //react npm plug in to control routes
+import { BrowserRouter, Routes, Route } from 'react-router-dom' //react npm plug in to control routes
 
 
 
@@ -25,7 +25,7 @@ const App = () => {
 
 
   return (
-    <Router>
+    <BrowserRouter>
       <Routes> {/* Routes within the router, each new page is added below following this format */}
         <Route path='/' element= {<Home/>}/>
         {authToken && <Route path='/dash' element= {<Dash/>}/>}
@@ -36,7 +36,7 @@ const App = () => {
         {authToken && <Route path='/success' element={<Success/>}/>}
         {authToken && <Route path='/profile' element={<Profile/>}/>}
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
