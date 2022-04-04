@@ -7,10 +7,13 @@ const styles = {
     }
 };
 
+
+
+
 class ProfilePic extends Component {
     constructor(props) {
         super(props);
-        this.state = {imageUrl: ''}
+        this.state = {imageUrl: this.props.imageURL}
     }
 
   componentDidMount() {

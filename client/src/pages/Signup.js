@@ -93,6 +93,8 @@ const Signup = () => {
     console.log("user", user)
     return (
         <>
+        {user &&
+        <>
             {/* nav component. */}
             <Nav mobile={false}
             setShowAuth={() => {}}
@@ -112,7 +114,7 @@ const Signup = () => {
                         <form onSubmit={handleSubmit}>
 
                             {/* profile pic component. */}
-                            <ProfilePic userId={userId}/>
+                            <ProfilePic userId={userId} imageURL={user.imageURL}/>
 
                             {/* <input
                             type='url'
@@ -224,6 +226,7 @@ const Signup = () => {
                     </div>
                 </div>
             </div>
+        </>}
         </>
     ) 
 }
