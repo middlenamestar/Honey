@@ -7,7 +7,7 @@ const Success = () => {
     const { width, height } = useWindowSize()
     useEffect(() => {
         setTimeout(()=>{
-            window.location = `http://localhost:3000/dash`
+            window.location = `${window.location.origin}/dash`
         },8000);
       }, []);
   return (
