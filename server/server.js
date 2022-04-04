@@ -12,7 +12,7 @@ const http = require("http");
 const {Server} = require("socket.io")
 app.use(
   cors({
-    origin: `${window.location.origin}`,
+    origin: 'https://project-333.herokuapp.com',
     
   })
 )
@@ -20,7 +20,7 @@ app.use(
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: `${window.location.origin}`,
+    origin: 'https://project-333.herokuapp.com',
     methods: ["GET", "POST"]
   },
 });
