@@ -7,7 +7,7 @@ const path = require('path');
 const routes = require('./routes');
 const db = require('./config/connection');
 
-// for chat function
+// for chat function /
 const http = require("http");
 const {Server} = require("socket.io")
 app.use(
