@@ -12,7 +12,7 @@ const Dash = () => {
     const navigate = useNavigate();
     const getUser = async () => {
         try {
-            const response = await axios.get('/api/users', {
+            const response = await axios.get('http://localhost:3001/api/users', {
                 params: {userId}
             })
             setUser(response.data)
@@ -53,7 +53,7 @@ const Dash = () => {
             let payload ={
                 likedUserID: likedUserID
             }
-            const response = await axios.put(`/api/users/${userId}`,payload)
+            const response = await axios.put(`http://localhost:3001/api/users/${userId}`,payload)
             
             console.log(response)
         } catch(error) {

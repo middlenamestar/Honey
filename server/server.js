@@ -7,12 +7,12 @@ const path = require('path');
 const routes = require('./routes');
 const db = require('./config/connection');
 
-// for chat function /
+// for chat function
 const http = require("http");
 const {Server} = require("socket.io")
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: "http://localhost:3000",
     
   })
 )
@@ -20,7 +20,7 @@ app.use(
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"]
   },
 });
@@ -72,8 +72,8 @@ app.post("/create-checkout-session", async (req, res) => {
           quantity: item.quantity,
         }
       }),
-      success_url: `http://localhost:3000/success`,
-      cancel_url: `http://localhost:3001/cancel`,
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.SERVER_URL}/cancel`,
     })
     res.json({ url: session.url })
   } catch (e) {
@@ -116,10 +116,6 @@ app.get('/', (req, res) => {
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 // })
-
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-});
 
 db.once('open', () => {
   server.listen(PORT, () => {
