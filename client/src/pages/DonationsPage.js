@@ -12,7 +12,7 @@ const  DonationsPage = () =>{
     setCount(num => Math.max(1, num - 1));
   };
   const handleFormSubmit = () => {
-    fetch("http://localhost:3001/create-checkout-session", {
+    fetch(`${window.location.origin}/create-checkout-session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -12,7 +12,7 @@ const Dash = () => {
     const navigate = useNavigate();
     const getUser = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/users', {
+            const response = await axios.get(`${window.location.origin}/api/users`, {
                 params: {userId}
             })
             setUser(response.data)
