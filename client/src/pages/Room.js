@@ -5,7 +5,7 @@ import Nav from "../components/Nav"
 import Chat from "./Chat"
 
 
-const socket = io.connect(`${window.location.origin}`) // server for backend
+const socket = io.connect('http://localhost:3001') // server for backend
 
 
 const Room = () => {
