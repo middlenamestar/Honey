@@ -25,7 +25,7 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
                 setError("Passwords don't match, please try again")
                 return
             }
-            const response = await axios.post(`http://localhost:3001/${isSignUp? 'signup': 'login'}` , {email, password})
+            const response = await axios.post(`${window.location.origin}/${isSignUp? 'signup': 'login'}` , {email, password})
 
             setCookie('UserId', response.data.userId)
             setCookie('AuthToken', response.data.token)
