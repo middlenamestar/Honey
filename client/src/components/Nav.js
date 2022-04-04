@@ -1,67 +1,64 @@
-// Store logo images in images folder, then import them here
-// Tinder uses two logos, a plain logo for the larger page, and a color logo for the minizimed/mobile layout
+import { useCookies } from 'react-cookie';
+import {useNavigate} from 'react-router-dom';
+import { Navbar, Container, Nav, Offcanvas } from 'react-bootstrap';
 
-import { useCookies } from 'react-cookie'
-import {useNavigate} from 'react-router-dom'
-import smallLogo from '../images/colorLogoPlaceholder.jpg'
-import bigLogo from '../images/honeylogo.png'
-
-const Nav = ({ props, mobile, setShowBuild, showBuild, setIsSignUp }) => {
-    const [cookies, setCookie, removeCookie] =useCookies(['user'])
+const Navigation = ({ props, setShowBuild, showBuild, setIsSignUp }) => {
+    const [cookies, setCookie, removeCookie] =useCookies(['user']);
     const handleClick = () => {
         setShowBuild(true)
         setIsSignUp(false)
-    }
-    let navigate =useNavigate()
-    const LogOuthandleClick  =() =>{
-        removeCookie('UserId', cookies.UserId)
-        removeCookie('AuthToken', cookies.AuthToken)
-        navigate('/')
-    }
+    };
 
-    const authToken = cookies.AuthToken
-    const tabs = ['Dash', 'Room', 'Donations Page']
+    let navigate = useNavigate();
+    const LogOuthandleClick  =() =>{
+        removeCookie('UserId', cookies.UserId);
+        removeCookie('AuthToken', cookies.AuthToken);
+        navigate('/');
+    };
+
+    const authToken = cookies.AuthToken;
+    const tabs = ['Dash', 'Room', 'Donations Page'];
     
     const loginFlip = () =>{
-        if(!authToken && !mobile){
-            return true
-        } else{
-            return false
+        if(!authToken) {
+            return true;
+        } else {
+            return false;
         }
-    }
+    };
 
     return (
-        <nav>
-            <div className='logoNavContainer'>
-            <div className="logoContainer">
-                <img className="logo" src={mobile ? smallLogo : bigLogo} alt="Company Logo" />
-                
-            </div>
-            <ul className='navBar'>
+        <>
+            <Navbar bg="dark" variant="dark" expand={false}>
+                <Container fluid>
+                    <Navbar.Brand href="/">
+                        BRAND
+                    </Navbar.Brand>
 
-            {tabs.map(tab => (
-                <li className='navItem' key={tab}>
-                    {/* // ternary operator for link to page depending on which page user is on -- fix later if issues? */}
-                    <a href={tab.split(" ").join("").toLowerCase()} onClick={() => props.handlePageChange(tab)}>
-                        {tab}
-                    </a>
-                </li>
-            ))} 
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" />
+                    <Navbar.Offcanvas
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel"
+                        placement="end"
+                    >
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title
+                            id="offcanvasNavbarLabel">Honey</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                                <Nav.Link href="/signup">Profile</Nav.Link>
+                                <Nav.Link href="/dash">Match</Nav.Link>
+                                <Nav.Link href="/room">Chatrooms</Nav.Link>
+                                <Nav.Link href="/donations">Donate 🍩</Nav.Link>
+                            </Nav>
+                        </Offcanvas.Body>
 
-        </ul>
-            </div>   
-            {loginFlip()?  <button 
-            className="navBtn" 
-            onClick={handleClick}
-            disabled={showBuild}
-            >Log in</button> : <button 
-            className="navBtn" 
-            onClick={LogOuthandleClick}
-            disabled={showBuild}
-            >Log out</button>  }
-        </nav>
-        
+                    </Navbar.Offcanvas>
+                </Container>
+            </Navbar>
+        </>
     ) 
-}
+};
 
-export default Nav
+export default Navigation;
