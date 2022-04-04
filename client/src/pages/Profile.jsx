@@ -21,7 +21,7 @@ require('dotenv').config();
  
     const getUserData= async () => {
         try{
-            const response = await axios.get(`${window.location.origin}/user`, {
+            const response = await axios.get('http://localhost:3001/user', {
                 params:{userId}
             })
                 setUser(response.data)
@@ -36,7 +36,7 @@ require('dotenv').config();
 
     const getUserAnime = async (malUser) => {
         try{
-            const response = await axios.get(`${window.location.origin}/userAnime`,{
+            const response = await axios.get('http://localhost:3001/userAnime',{
                 params:{malUser}
             })
             setUserAnime(response.data)

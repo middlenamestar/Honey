@@ -30,7 +30,7 @@ const Signup = () => {
     })
     const getUserData= async () => {
         try{
-            const response = await axios.get(`${window.location.origin}/user`, {
+            const response = await axios.get('http://localhost:3001/user', {
                 params:{userId}
             })
             setUser(response.data)
@@ -66,7 +66,7 @@ const Signup = () => {
         console.log('submit')
         e.preventDefault()
         try{
-          const response =  await axios.put(`${window.location.origin}/user`,{formData})
+          const response =  await axios.put('http://localhost:3001/user',{formData})
 
           const success = response.status === 200
           if (success)

@@ -12,7 +12,7 @@ const http = require("http");
 const {Server} = require("socket.io")
 app.use(
   cors({
-    origin: `${window.location.origin}`,
+    origin: "http://localhost:3000",
     
   })
 )
@@ -20,7 +20,7 @@ app.use(
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: `${window.location.origin}`,
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"]
   },
 });
@@ -72,8 +72,8 @@ app.post("/create-checkout-session", async (req, res) => {
           quantity: item.quantity,
         }
       }),
-      success_url: `${window.location.origin}/success`,
-      cancel_url: `${window.location.origin}/cancel`,
+      success_url: `${process.env.CLIENT_URL}/success`,
+      cancel_url: `${process.env.SERVER_URL}/cancel`,
     })
     res.json({ url: session.url })
   } catch (e) {
