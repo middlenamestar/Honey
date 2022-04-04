@@ -132,6 +132,45 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
+
+  likedUserUpdate(req, res) {
+       console.log(req.params)
+       console.log(req.body)
+       console.log("thisisReq", req)
+  return  User.findOneAndUpdate(
+      {ManmadeID:req.params.userId },
+      { $push: { 'matches': req.body.likedUserID
+        
+      } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>{
+        console.log('loggin Here')
+        if(!user){
+          res.status(404).json({ message: "No user with that ID" })
+        }else{res.send(user)}
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(500).json(err)});
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // delete a user
   deleteUser(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
