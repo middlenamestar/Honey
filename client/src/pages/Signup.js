@@ -15,22 +15,7 @@ const Signup = () => {
     const [ cookies, setCookie, removeCookie] = useCookies('user')
     const [user, setUser] = useState(null)
     const userId= cookies.UserId;
-    const getUserData= async () => {
-        try{
-            const response = await axios.get('http://localhost:3001/user', {
-                params:{userId}
-            })
-            setUser(response.data)
-        }catch(err){
-            console.log(err)
-        }
-    }
-    useEffect(() => {
-        getUserData();
-    }, []);
-
-
-
+    let responseData
     const [formData, setFormData] = useState({
         user_id: cookies.UserId,
         username: '',
@@ -43,6 +28,37 @@ const Signup = () => {
         // imageUrl: '',
         matches: []
     })
+    const getUserData= async () => {
+        try{
+            const response = await axios.get('http://localhost:3001/user', {
+                params:{userId}
+            })
+            setUser(response.data)
+            responseData=response.data
+            console.log("response",responseData)
+            setFormData({
+                user_id: cookies.UserId,
+                username:responseData.username ,
+                malUsername:responseData.myAnimeListUsername ,
+                bdayMo:responseData.dobMonth,
+                bdayDay: responseData.dobDay,
+                bdayYear: responseData.dobYear,
+                bio: responseData.bio,
+                // email: '',
+                // imageUrl: '',
+                matches: []
+            })
+        }catch(err){
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        getUserData();
+    }, []);
+
+
+
+
 
     let navigate =useNavigate()
 
