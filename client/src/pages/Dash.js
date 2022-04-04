@@ -2,14 +2,14 @@ import Nav from "../components/Nav"
 import {useEffect, useState} from 'react'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
-import url from 'url'
+import { useNavigate } from "react-router-dom"
 
 const Dash = () => {
     const [user, setUser] = useState(null)
     const [cookies,] = useCookies(['user'])
  //setCookie, removeCookie
     const userId = cookies.UserId
-
+    const navigate = useNavigate();
     const getUser = async () => {
         try {
             const response = await axios.get('http://localhost:3001/api/users', {
@@ -26,8 +26,8 @@ const Dash = () => {
         getUser()
     }, [])
 
-    console.log('user', user)
-    console.log(user?.[1].username)
+   // console.log('user', user)
+    //console.log(user?.[1].username)
 
     // this might not work
     for (var i = 0; i < user?.length; i++) {
@@ -53,13 +53,19 @@ const Dash = () => {
             let payload ={
                 likedUserID: likedUserID
             }
-            const response = await axios.put(`http://localhost:3001/api/users/${userId}`,payload)
+            const response = await axios.put(`${window.location.origin}/api/users/${userId}`,payload)
             
             console.log(response)
         } catch(error) {
             console.log(error)
         }
+        window.location.reload()
     }
+    const ondislike = async () =>{
+        window.location.reload()
+    }
+
+
 
     return (
         <>
@@ -72,7 +78,7 @@ const Dash = () => {
                 <p> {user?.[matchNumber].firstName} </p>
 
                 <div className='match-buttons'>
-                    <button className='dislike'>Dislike</button>
+                    <button className='dislike' onClick={ondislike}>Dislike</button>
                     <button className='like' onClick={onlike}>Like</button>
                 </div>
             </div>
