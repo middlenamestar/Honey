@@ -31,7 +31,7 @@ class ProfilePic extends Component {
                   this.setState({
                       imageUrl: result.info.url
                   })
-                  const response = await axios.put(`${window.location.origin}/userImage`,{imageURL:result.info.url, userId: this.props.userId})
+                  const response = await axios.put(`/userImage`,{imageURL:result.info.url, userId: this.props.userId})
                 }
               }
             );
