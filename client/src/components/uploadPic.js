@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import { useCookies } from 'react-cookie';
 const styles = {
     pic: {
         maxWidth: '300px'
@@ -11,8 +12,9 @@ class ProfilePic extends Component {
         super(props);
         this.state = {imageUrl: ''}
     }
-    
-    componentDidMount() {
+
+  componentDidMount() {
+
         var myWidget = window.cloudinary.createUploadWidget(
             {
                 // cloud name is like my "database"
@@ -20,12 +22,13 @@ class ProfilePic extends Component {
                 // upload preset is like the "folder"/media library everything gets stored in.
               uploadPreset: "adbsipsa"
             },
-            (error, result) => {
+            async (error, result) => {
                 if (!error && result && result.event === "success") {
                   console.log("Done! Here is the image info: ", result.info);
                   this.setState({
                       imageUrl: result.info.url
                   })
+                  const response = await axios.put('http://localhost:3001/userImage',{imageURL:result.info.url, userId: this.props.userId})
                 }
               }
             );

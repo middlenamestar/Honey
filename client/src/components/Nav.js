@@ -20,7 +20,7 @@ const Nav = ({ props, mobile, setShowBuild, showBuild, setIsSignUp }) => {
     }
 
     const authToken = cookies.AuthToken
-    const tabs = ['Dash', 'Room', 'Donations Page']
+    const tabs = ['Dash', 'Room', 'Donations Page', 'Profile']
     
     const loginFlip = () =>{
         if(!authToken && !mobile){
