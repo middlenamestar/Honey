@@ -18,6 +18,8 @@ body {
 
 img {
     display: block;
+    width: 100%;
+    height:50%;
 }
 
 .container {
@@ -59,11 +61,14 @@ img {
     justify-content: center;
     align-items: center;
     margin-right: 3rem;
+    object-fit: contain;
+    height:10%
     
 }
 
 .profile-image img {
     border-radius: 50%;
+    object-fit: contain;
 }
 .profileButton{
     border:none;

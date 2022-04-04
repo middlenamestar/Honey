@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import ProfilePic from '../components/uploadPic';
 import '../styles/signup.css';
@@ -13,8 +13,26 @@ const styles = {
 
 const Signup = () => {
     const [ cookies, setCookie, removeCookie] = useCookies('user')
+    const [user, setUser] = useState(null)
+    const userId= cookies.UserId;
+    const getUserData= async () => {
+        try{
+            const response = await axios.get('http://localhost:3001/user', {
+                params:{userId}
+            })
+            setUser(response.data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        getUserData();
+    }, []);
+
+
+
     const [formData, setFormData] = useState({
-        user_id:cookies.UserId,
+        user_id: cookies.UserId,
         username: '',
         malUsername: '',
         bdayMo: '',
@@ -55,8 +73,8 @@ const Signup = () => {
             [name] : value
         }))
     }
-    console.log(formData);
-    
+    console.log("formdata", formData);
+    console.log("user", user)
     return (
         <>
             {/* nav component. */}
@@ -78,7 +96,7 @@ const Signup = () => {
                         <form onSubmit={handleSubmit}>
 
                             {/* profile pic component. */}
-                            <ProfilePic/>
+                            <ProfilePic userId={userId}/>
 
                             {/* <input
                             type='url'

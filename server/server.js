@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require("cors")
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -8,11 +9,11 @@ const db = require('./config/connection');
 
 // for chat function
 const http = require("http");
-const cors = require("cors")
 const {Server} = require("socket.io")
 app.use(
   cors({
     origin: "http://localhost:3000",
+    
   })
 )
 

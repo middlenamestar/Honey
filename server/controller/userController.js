@@ -25,6 +25,22 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  getUserInfo(req, res) {
+    User.findOne({ ManmadeID: req.query.userId })
+      .select("-__v")
+      .populate("matches")
+      .populate("posts")
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: "No user with that ID" })
+          : res.status(201).send(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+
+
+
+
 
   logInUser(req, res) {
    return User.findOne({ email: req.body.email})
@@ -84,7 +100,8 @@ module.exports = {
         dobDay: formData.bdayDay,
         dobMonth: formData.bdayMo,
         dobYear:formData.bdayYear,
-        bio: formData.bio
+        bio: formData.bio,
+        myAnimeListUsername: formData.malUsername
       } },
       { runValidators: true, new: true }
     )
@@ -92,6 +109,25 @@ module.exports = {
         if(!user){
           res.status(404).json({ message: "No user with that ID" })
         }else{res.send(user)}
+      })
+      .catch((err) => {
+        console.log(err)
+        res.status(500).json(err)});
+  },
+  ImageUpload(req, res, imageURL, userId) {
+    //   console.log(req.params)
+    //   console.log(req.body)
+  return  User.findOneAndUpdate(
+      {ManmadeID:userId },
+      { $set: {
+        imageURL:imageURL
+      } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>{
+        if(!user){
+          res.status(404).json({ message: "No user with that ID" })
+        }
       })
       .catch((err) => res.status(500).json(err));
   },
