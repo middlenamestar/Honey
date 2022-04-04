@@ -71,7 +71,7 @@ const Signup = () => {
           const success = response.status === 200
           if (success)
             {
-                navigate('/dash')
+                navigate('/profile')
             }
         }catch(err){
             console.log(err)
