@@ -16,8 +16,8 @@ const Navigation = ({ props, setShowBuild, showBuild, setIsSignUp }) => {
         navigate('/');
     };
 
-    const authToken = cookies.AuthToken;
-    const tabs = ['Dash', 'Room', 'Donations Page'];
+    const authToken = cookies.AuthToken
+    const tabs = ['Dash', 'Room', 'Donations Page', 'Profile']
     
     const loginFlip = () =>{
         if(!authToken) {

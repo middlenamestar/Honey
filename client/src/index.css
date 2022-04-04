@@ -295,3 +295,35 @@ nav .navItem a{
 }
 
 /* -----------------END CHAT STYLING----------------- */
+
+/* -----------------START DASH STYLING----------------- */
+.match-card {
+  width: 300px;
+  height: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 2px solid #d03684;
+  outline: 2px solid #fad37d;
+  border-radius: 15px;
+  vertical-align: middle;
+  margin-top: 8%;
+  position: relative;
+}
+
+.match-header {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.match-buttons {
+ position: absolute;
+ bottom: 0;
+ margin-bottom: 5%;
+ margin-left: auto;
+ margin-right: auto;
+ align-items: center;
+}
+
+
+
+/* -----------------END DASH STYLING----------------- */

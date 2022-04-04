@@ -3,12 +3,14 @@ const apiRoutes = require('./api');
 const {v4:uuidv4}= require('uuid')
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-
+const axios =require('axios')
 const {
     checkExist,
     signUpUser,
     logInUser,
-    onBoarding
+    onBoarding,
+    getUserInfo,
+    ImageUpload
 } = require('../controller/userController');
 router.use('/api', apiRoutes);
 
@@ -88,14 +90,50 @@ router.route('/user').put(async(req,res) => {
 })
 //---------------------End of UpdateUser-----------------------------
 
+//--------------------- UpdateUserImage Routes ------------------------
+router.route('/userImage').put(async(req,res) => {
+    const imageURL=req.body.imageURL
+    const userId = req.body.userId
+    ImageUpload(req, res, imageURL, userId)
+})
+//---------------------End of UpdateUserImage-----------------------------
 
 
 
+//--------------------- GetUser Routes ------------------------
+router.route('/user').get(async(req,res) => {
+    try {  
+        getUserInfo(req,res)
+
+    } catch (error) {
+        console.log(error)
+    }
+
+})
+//---------------------End of GetUser-----------------------------
 
 
+//--------------------- GetUserAnime Routes ------------------------
+router.route('/userAnime').get(async(req,res) => {
+    const getMalData = async (req,res) =>{
+        const ApiResponse = await axios.get(`https://api.myanimelist.net/v2/users/${req.query.malUser}/animelist?limit=100`,{
+            headers: {
+                'X-MAL-CLIENT-ID': '0969c704ebfcb780acbeb8f07e66e05d',
+              }
+        })
+        res.send(ApiResponse.data.data)
+    }
+    try {  
+        getMalData(req,res)
+
+    } catch (error) {
+        console.log(error)
+    }
+
+})
 
 
-
+//---------------------End of GetUserAnime-----------------------------
 
 
 

@@ -45,6 +45,10 @@ const userSchema = new Schema(
             type: String,
             trim: true
         },
+        imageURL: {
+            type: String,
+            trim: true
+        },
         myAnimeListUsername: {
             type: String,
             trim: true

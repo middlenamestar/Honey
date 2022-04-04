@@ -1,6 +1,84 @@
+import Nav from "../components/Nav"
+import {useEffect, useState} from 'react'
+import { useCookies } from 'react-cookie'
+import axios from 'axios'
+import url from 'url'
+
 const Dash = () => {
+    const [user, setUser] = useState(null)
+    const [cookies,] = useCookies(['user'])
+ //setCookie, removeCookie
+    const userId = cookies.UserId
+
+    const getUser = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/api/users', {
+                params: {userId}
+            })
+            setUser(response.data)
+            console.log(response.data)
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getUser()
+    }, [])
+
+    console.log('user', user)
+    console.log(user?.[1].username)
+
+    // this might not work
+    for (var i = 0; i < user?.length; i++) {
+        console.log(user?.length)
+        var matchNumber = parseInt(Math.random() * (user?.length-1 ))
+    } 
+
+    // to get random user - not gonna work??
+    // const randomUser = user.map(user => {
+    //     return Math.floor(Math.random(user))
+    // })
+    
+    // const randomUser = (user) => {
+    //     return Math.floor(Math.random(user))
+    // }
+    // console.log(randomUser(user))
+
+    // put route for those that match is clicked, next user for that no match is clicked...
+    // get rid of previously saved users?
+    const likedUserID =user?.[matchNumber]._id
+    const onlike = async () => {
+        try {
+            let payload ={
+                likedUserID: likedUserID
+            }
+            const response = await axios.put(`http://localhost:3001/api/users/${userId}`,payload)
+            
+            console.log(response)
+        } catch(error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <div>Dash</div>
+        <>
+        <Nav/>
+        { user &&
+        <div className="dashboard">
+            <div className='match-card' user={user}>
+                <h2 className='match-header'>Matched with: {user?.[matchNumber].username}</h2>
+                <p> {user?.[matchNumber].bio} </p>
+                <p> {user?.[matchNumber].firstName} </p>
+
+                <div className='match-buttons'>
+                    <button className='dislike'>Dislike</button>
+                    <button className='like' onClick={onlike}>Like</button>
+                </div>
+            </div>
+        </div>
+    }
+        </>
     ) 
 }
 
