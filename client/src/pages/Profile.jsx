@@ -88,9 +88,16 @@ require('dotenv').config();
     <div className="gallery">
         {userAnime.map((items)=>{
             return(
+
         <div className="gallery-item" tabIndex="0" key ={items.node.id}>
+            <div>
             <img src={items.node.main_picture.medium.replace(/\\/g,'')} className="gallery-image" alt=""/>
+            </div >
+            <div>
+            <p>{items.node.title}</p>
+            </div>
         </div>
+
             )
         })}
 
@@ -99,11 +106,6 @@ require('dotenv').config();
 
 
 </main>
-    
-    
-    
-    
-    
     </div>
  }
 </>   

@@ -7,10 +7,13 @@ const styles = {
     }
 };
 
+
+
+
 class ProfilePic extends Component {
     constructor(props) {
         super(props);
-        this.state = {imageUrl: ''}
+        this.state = {imageUrl: this.props.imageURL}
     }
 
   componentDidMount() {
@@ -35,7 +38,8 @@ class ProfilePic extends Component {
             // this is like a standard code to be able to open the upload widget.
             document.getElementById("upload_widget").addEventListener(
                 "click",
-                function () {
+                function (e) {
+                  e.preventDefault();
                   myWidget.open();
                 },
                 false
