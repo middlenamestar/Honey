@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import { Button } from 'react-bootstrap';
+
 const styles = {
     pic: {
         maxWidth: '300px'
     }
 };
-
-
 
 
 class ProfilePic extends Component {
@@ -60,9 +60,9 @@ class ProfilePic extends Component {
                     {imageRender}
                 </div>
                 <div>
-                    <button id="upload_widget" className="">
-                    upload
-                    </button>
+                    <Button variant="dark" id="upload_widget" className="my-2">
+                    Upload
+                    </Button>
                 </div>
             </>
         );
