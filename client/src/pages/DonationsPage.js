@@ -49,17 +49,15 @@ const  DonationsPage = () =>{
           <Button
             variant="outline-dark"
             type="button"
-            className=""
-            onClick={handleIncrement}>
-            Add
-          </Button>
+            onClick={handleDecrement}
+          >Take Away</Button>
           {' '}
           <Button
             variant="outline-dark"
             type="button"
-            className=""
-            onClick={handleDecrement}
-          >Take Away</Button>
+            onClick={handleIncrement}>
+            Add
+          </Button>
 
           <hr/>
 
