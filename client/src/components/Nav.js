@@ -7,19 +7,23 @@ import {useNavigate} from 'react-router-dom';
 const styles = {
     color: {
         color: "rgb(115, 203, 0)"
+    },
+    black: {
+        color: "black"
     }
 };
 
 const Navigation = () => {
 
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
-    const authToken = cookies.authToken;
+    const authToken = cookies.AuthToken;
 
     // logout handleclick.
     let navigate = useNavigate();
     const LogOuthandleClick  =() =>{
         removeCookie('UserId', cookies.UserId);
         removeCookie('AuthToken', cookies.AuthToken);
+        window.location.reload()
         navigate('/');
     };
 
@@ -53,12 +57,14 @@ const Navigation = () => {
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 <Nav.Link style={styles.color} href="/profile">Profile</Nav.Link>
                                 <Nav.Link style={styles.color} href="/dash">Meet</Nav.Link>
-                                <Nav.Link style={styles.color} href="/room">Chatrooms</Nav.Link>
+                                <Nav.Link style={styles.color} href="/room">Chatroom</Nav.Link>
                                 <Nav.Link style={styles.color} href="/DonationsPage">Donate 🍩</Nav.Link>
-                                { loginFlip()?
-                                    <p>x</p>
-                                : <Nav.Link onClick={LogOuthandleClick}>Logout</Nav.Link> }
                             </Nav>
+                            <Navbar.Text>
+                                { loginFlip() ?
+                                    ""
+                                : <Nav.Link onClick={LogOuthandleClick} style={styles.black}>Logout</Nav.Link> }
+                            </Navbar.Text>
                         </Offcanvas.Body>
 
                     </Navbar.Offcanvas>
@@ -69,7 +75,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// <Navbar.Text>
-// Signed in as: <a href="#login">Mark Otto</a>
-// </Navbar.Text>
