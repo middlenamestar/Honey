@@ -74,8 +74,18 @@ const Dash = () => {
         <div className="dashboard">
             <div className='match-card' user={user}>
                 <h2 className='match-header'>Matched with: {user?.[matchNumber].username}</h2>
+                
+                {user?.[matchNumber].imageURL ? <img src={user?.[matchNumber].imageURL} alt="Profile picture of User" /> : <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />}
                 <p> {user?.[matchNumber].bio} </p>
-                <p> {user?.[matchNumber].firstName} </p>
+                <h3>These are some of my liked Anime: </h3>
+                    {user[matchNumber].animeTitles.map((items)=>{ 
+                        return(<p>{items}</p>)
+                        
+                    })}
+                
+                
+                
+                
 
                 <div className='match-buttons'>
                     <button className='dislike' onClick={ondislike}>Dislike</button>
