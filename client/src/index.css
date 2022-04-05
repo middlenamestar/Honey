@@ -18,7 +18,31 @@ body {
   height: 100%;
 }
 
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
 
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.closeBtn {
+  cursor: pointer;
+}
+
+.authHead {
+  cursor: default;
+}
 
 /* -----------------START HOMEPAGE STYLING----------------- */
 /* .primaryBtn {
@@ -197,13 +221,7 @@ nav .navItem a{
 /* .joinChatExtra {
   margin-bottom: 10%;
 }
-
-.btn {
-  background-color: black;
-  color: white;
-  height: 50px;
-  border-radius: 15px;
-} */
+ */
 
 .chat-body {
   height: 400px;
@@ -302,7 +320,7 @@ nav .navItem a{
 /* -----------------END CHAT STYLING----------------- */
 
 /* -----------------START DASH STYLING----------------- */
-.match-card {
+/* .match-card {
   width: 300px;
   height: 400px;
   margin-right: auto;
@@ -313,9 +331,9 @@ nav .navItem a{
   vertical-align: middle;
   margin-top: 8%;
   position: relative;
-}
+} */
 
-.match-header {
+/* .match-header {
   text-align: center;
   margin-top: 5px;
 }
@@ -327,8 +345,6 @@ nav .navItem a{
  margin-left: auto;
  margin-right: auto;
  align-items: center;
-}
-
-
+} */
 
 /* -----------------END DASH STYLING----------------- */
