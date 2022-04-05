@@ -23,7 +23,7 @@ const Navigation = () => {
     const LogOuthandleClick  =() =>{
         removeCookie('UserId', cookies.UserId);
         removeCookie('AuthToken', cookies.AuthToken);
-        window.location.reload()
+        window.location.href = "/";
         navigate('/');
     };
 
@@ -59,12 +59,10 @@ const Navigation = () => {
                                 <Nav.Link style={styles.color} href="/dash">Meet</Nav.Link>
                                 <Nav.Link style={styles.color} href="/room">Chatroom</Nav.Link>
                                 <Nav.Link style={styles.color} href="/DonationsPage">Donate 🍩</Nav.Link>
+                                { loginFlip() ? "" :
+                                    <Nav.Link onClick={LogOuthandleClick} style={styles.black}>Logout</Nav.Link>
+                                }
                             </Nav>
-                            <Navbar.Text>
-                                { loginFlip() ?
-                                    ""
-                                : <Nav.Link onClick={LogOuthandleClick} style={styles.black}>Logout</Nav.Link> }
-                            </Navbar.Text>
                         </Offcanvas.Body>
 
                     </Navbar.Offcanvas>
