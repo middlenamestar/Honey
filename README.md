@@ -3,7 +3,7 @@
 <br/>
 
 ## Project Description
-This application is to help anime lovers find a connection. Anime is a popular topic of discussion, 
+This application helps anime lovers find a connection. Anime is a popular topic of discussion, according to Google volume search, close to 100 million people watch anime. Find those that love to watch anime and want to find love at Honey!
 
 
 <br/>
@@ -36,19 +36,19 @@ Install all dependencies by typing `npm i` or `npm install` into your terminal f
 
 ### Home
 
-![homepage]()
+![homepage](assets/home.png)
 
 <br/>
 
 ### User Profile
 
-![profile]()
+![profile](assets/profile.png)
 
 <br/>
 
 ### Meet
 
-![meet]()
+![meet](assets/meet.png)
 
 <br/>
 
@@ -98,6 +98,8 @@ Client Side Technologies:
 
 [npm @testing-library/user-event](https://www.npmjs.com/package/@testing-library/user-event)
 
+[npm animate.css](https://www.npmjs.com/package/animate.css?activeTab=versions)
+
 [npm axios](https://www.npmjs.com/package/axios)
 
 [npm bootstrap](https://www.npmjs.com/package/bootstrap)
@@ -105,6 +107,8 @@ Client Side Technologies:
 [npm dotenv](https://www.npmjs.com/package/dotenv)
 
 [npm react](https://www.npmjs.com/package/react)
+
+[npm react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
 
 [npm react-confetti](https://www.npmjs.com/package/react-confetti)
 
@@ -126,9 +130,11 @@ Client Side Technologies:
 
 Server Side Technologies:
 
-[npm cors](https://www.npmjs.com/package/cors)
+[npm axios](https://www.npmjs.com/package/axios)
 
 [npm bcrypt](https://www.npmjs.com/package/bcrypt)
+
+[npm cors](https://www.npmjs.com/package/cors)
 
 [npm dotenv](https://www.npmjs.com/package/dotenv)
 
@@ -162,7 +168,9 @@ All starting code was provided by: Trilogy Education Services, LLC, a 2U, Inc. b
 
 [Build A Realtime Chat App In ReactJS and NodeJS | Socket.io Tutorial - Pedro Tech](https://youtu.be/NU-HfZY3ATQ)
 
-[Ultimate Tinder Clone | MongoDB | Authentication | Cookies | Chat - Code with Ania Kubów](https://www.youtube.com/watch?v=Q70IMS-Qnjk&t=15520s)
+[Ultimate Tinder Clone | MongoDB | Authentication | Cookies | Chat - Code with Ania Kubów](https://youtu.be/Q70IMS-Qnjk)
+
+[Samurai Champloo – Opening Theme – Battlecry - Funimation](https://youtu.be/Eq6EYcpWB_c)
 
 <br/>
 
