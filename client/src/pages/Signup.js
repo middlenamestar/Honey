@@ -5,6 +5,7 @@ import '../styles/signup.css';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
 const styles = {
     txtAreaResize: {
         resize: 'none'
@@ -102,13 +103,13 @@ const Signup = () => {
             />
 
             {/* container/formatting */}
-            <div className='container'>
+            <div className='container my-3'>
                 <div className='row'>
                     {/* col to make the entire form vertical. */}
                     <div className='col'>
 
                         {/* header */}
-                        <h2>build profile</h2>
+                        <h2 className='my-3'>Build your profile</h2>
 
                         {/* start of form. */}
                         <form onSubmit={handleSubmit}>
@@ -128,8 +129,8 @@ const Signup = () => {
                             </div> */}
 
                             {/* username. */}
-                            <div className='form-group'>
-                                <label htmlFor='username'>username</label>
+                            <div className='form-group my-2'>
+                                <label htmlFor='username'>Username</label>
                                 <input
                                     id='username'
                                     type='text'
@@ -143,8 +144,8 @@ const Signup = () => {
                             </div>
                             
                             {/* my anime list username. */}
-                            <div className='form-group'>
-                                <label htmlFor='malUsername'>MYANIMELIST username</label>
+                            <div className='form-group my-2'>
+                                <label htmlFor='malUsername'>MYANIMELIST Username!</label>
                                 <input
                                     id='malUsername'
                                     type='text'
@@ -158,7 +159,7 @@ const Signup = () => {
                             </div>
 
                             {/* birthday. */}
-                            <div className='row'>
+                            <div className='row my-2'>
 
                                 <label>birthday 🎈🦂</label>
 
@@ -204,7 +205,7 @@ const Signup = () => {
                             </div>
 
                             {/* about section. */}
-                            <div className='form-group'>
+                            <div className='form-group my-2'>
                                 <label htmlFor='bio'>about me</label>
                                 <textarea
                                     id='bio'
@@ -220,7 +221,7 @@ const Signup = () => {
                             </div>
 
                             {/* SUBMIT FORM */}
-                            <input type='submit' className='' value='save'/>
+                            <input type='submit' className='btn mb-4' value='save'/>
 
                         </form>
                     </div>
