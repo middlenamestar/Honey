@@ -93,7 +93,7 @@ const Dash = () => {
 
                                         <p>{user?.[matchNumber].bio}</p>
 
-                                        <h5>Currently Watching: </h5>
+                                        <h5 className="my-2">Currently Watching: </h5>
                                             {user[matchNumber].animeTitles.map((items)=>{ 
                                                 return(<p>{items}</p>)
                                                 

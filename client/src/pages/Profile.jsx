@@ -92,7 +92,7 @@ const Profile = () => {
 
                                     {/* MATCHES */}
                                     <div className='my-4'>
-                                        <h5>Matches (luv connections):</h5>
+                                        <h5 className='my-2'>Matches (luv connections):</h5>
                                         <ul style={{ listStyleType: "none" }}>
                                             {user.matches.map((item)=>{return(<li key={item.ManmadeID}>{item.username}</li>)})}
                                         </ul>
