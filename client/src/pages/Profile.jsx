@@ -26,7 +26,9 @@ require('dotenv').config();
             })
                 setUser(response.data)
                 getUserAnime(response.data.myAnimeListUsername);
-            
+            console.log("response", response.data.matches.map((item)=>{
+                return(item)
+            }))
             
         }catch(err){
             console.log(err)
@@ -76,6 +78,10 @@ require('dotenv').config();
 
                 <div className="profile-bio">
                     <p><span className="profile-real-name">{user.username}</span> {user.bio}</p>
+                    <h3>These are my matches</h3>
+                    <ul>
+                        {user.matches.map((item)=>{return(<li key={item.ManmadeID}>{item.username}</li>)})}
+                    </ul>
                 </div>
             </div>
         </div>
