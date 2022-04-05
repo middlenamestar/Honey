@@ -65,6 +65,12 @@ const userSchema = new Schema(
         //         ref: 'Message'
         //     }
         // ],
+        animeTitles:[
+            {
+                type:String,
+                trim:true
+            }
+        ],
         matches: [
             {
                 type: Schema.Types.ObjectId,

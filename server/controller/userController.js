@@ -38,39 +38,33 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-
-
-
-
   logInUser(req, res) {
-   return User.findOne({ email: req.body.email})
-        .select("-__v")
-        .populate("matches")
-        .populate("posts")
-        .then((user) =>{
-          if(!user){
-            res.status(404).json({ message: "No user with that ID" })
-          }else{return user}
-        })
-        
-  },
-
-
-
-
-
-
-  checkExist(email) {
-  return  User.findOne({ email: email })
+    return User.findOne({ email: req.body.email })
       .select("-__v")
       .populate("matches")
       .populate("posts")
-      .then((user) =>{
-        if(user){thisisaSwitch= true}
-          else{thisisaSwitch= false}
-        return thisisaSwitch
-        });
+      .then((user) => {
+        if (!user) {
+          res.status(404).json({ message: "No user with that ID" });
+        } else {
+          return user;
+        }
+      });
+  },
 
+  checkExist(email) {
+    return User.findOne({ email: email })
+      .select("-__v")
+      .populate("matches")
+      .populate("posts")
+      .then((user) => {
+        if (user) {
+          thisisaSwitch = true;
+        } else {
+          thisisaSwitch = false;
+        }
+        return thisisaSwitch;
+      });
   },
   // create a user
   createUser(req, res) {
@@ -90,86 +84,104 @@ module.exports = {
       });
   },
   // update a user - not sure if this is something we would need?
-  onBoarding(req, res, formData) {
+  async onBoarding(req, res, formData) {
     //   console.log(req.params)
     //   console.log(req.body)
-  return  User.findOneAndUpdate(
-      {ManmadeID:formData.user_id },
-      { $set: {
-        username: formData.username,
-        dobDay: formData.bdayDay,
-        dobMonth: formData.bdayMo,
-        dobYear:formData.bdayYear,
-        bio: formData.bio,
-        myAnimeListUsername: formData.malUsername
-      } },
+    const ApiResponse = await axios.get(
+      `https://api.myanimelist.net/v2/users/${formData.malUsername}/animelist?limit=100`,
+      {
+        headers: {
+          "X-MAL-CLIENT-ID": "0969c704ebfcb780acbeb8f07e66e05d",
+        },
+      }
+    );
+    let TitleData = [];
+    let catTitleData = [];
+    ApiResponse.data.data.map((item) => {
+      TitleData.push(item.node.title);
+    });
+    //console.log(TitleData)
+    var i = TitleData.length,
+      k,
+      temp;
+    while (--i > 0) {
+      k = Math.floor(Math.random() * (i + 1));
+      temp = TitleData[k];
+      TitleData[k] = TitleData[i];
+      TitleData[i] = temp;
+    }
+    for (var j = 0; TitleData.length < 5 ? j < TitleData.length : j < 5; j++) {
+      catTitleData.push(TitleData[j]);
+    }
+    return User.findOneAndUpdate(
+      { ManmadeID: formData.user_id },
+      {
+        $set: {
+          username: formData.username,
+          dobDay: formData.bdayDay,
+          dobMonth: formData.bdayMo,
+          dobYear: formData.bdayYear,
+          bio: formData.bio,
+          myAnimeListUsername: formData.malUsername,
+          animeTitles: catTitleData,
+        },
+      },
       { runValidators: true, new: true }
     )
-      .then((user) =>{
-        if(!user){
-          res.status(404).json({ message: "No user with that ID" })
-        }else{res.send(user)}
+      .then((user) => {
+        if (!user) {
+          res.status(404).json({ message: "No user with that ID" });
+        } else {
+          res.send(user);
+        }
       })
       .catch((err) => {
-        console.log(err)
-        res.status(500).json(err)});
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
   ImageUpload(req, res, imageURL, userId) {
     //   console.log(req.params)
     //   console.log(req.body)
-  return  User.findOneAndUpdate(
-      {ManmadeID:userId },
-      { $set: {
-        imageURL:imageURL
-      } },
+    return User.findOneAndUpdate(
+      { ManmadeID: userId },
+      {
+        $set: {
+          imageURL: imageURL,
+        },
+      },
       { runValidators: true, new: true }
     )
-      .then((user) =>{
-        if(!user){
-          res.status(404).json({ message: "No user with that ID" })
+      .then((user) => {
+        if (!user) {
+          res.status(404).json({ message: "No user with that ID" });
         }
       })
       .catch((err) => res.status(500).json(err));
   },
 
-
   likedUserUpdate(req, res) {
-       console.log(req.params)
-       console.log(req.body)
-       console.log("thisisReq", req)
-  return  User.findOneAndUpdate(
-      {ManmadeID:req.params.userId },
-      { $push: { 'matches': req.body.likedUserID
-        
-      } },
+    console.log(req.params);
+    console.log(req.body);
+    console.log("thisisReq", req);
+    return User.findOneAndUpdate(
+      { ManmadeID: req.params.userId },
+      { $push: { matches: req.body.likedUserID } },
       { runValidators: true, new: true }
     )
-      .then((user) =>{
-        console.log('loggin Here')
-        if(!user){
-          res.status(404).json({ message: "No user with that ID" })
-        }else{res.send(user)}
+      .then((user) => {
+        console.log("loggin Here");
+        if (!user) {
+          res.status(404).json({ message: "No user with that ID" });
+        } else {
+          res.send(user);
+        }
       })
       .catch((err) => {
-        console.log(err)
-        res.status(500).json(err)});
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // delete a user
   deleteUser(req, res) {
@@ -181,5 +193,5 @@ module.exports = {
       )
       .then(() => res.json({ message: "User and posts deleted!" }))
       .catch((err) => res.status(500).json(err));
-  }
+  },
 };
