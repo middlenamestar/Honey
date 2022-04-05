@@ -3,7 +3,7 @@
 <br/>
 
 ## Project Description
-This application is to help anime lovers find a connection.
+This application is to help anime lovers find a connection. 
 
 
 <br/>
@@ -34,13 +34,51 @@ Install all dependencies by typing `npm i` or `npm install` into your terminal f
 
 <br/>
 
-![webpage]()
+### Home
+
+![homepage]()
+
+<br/>
+
+### User Profile
+
+![profile]()
+
+<br/>
+
+### Meet
+
+![meet]()
+
+<br/>
+
+### Chat
+
+![chat](assets/chat.png)
+
+<br/>
+
+### Donations
+
+![donation](assets/donation.png)
 
 <br/>
 
 ## Wireframe
 
+![wireframe1](assets/wireframe1.jpg)
 
+<br/>
+
+![wireframe2](assets/wireframe2.jpg)
+
+<br/>
+
+![wireframe3](assets/wireframe3.png)
+
+<br/>
+
+![wireframe4](assets/wireframe4.png)
 
 <br/>
 
@@ -114,6 +152,8 @@ All other Technologies:
 
 [npm concurrently](https://www.npmjs.com/package/concurrently)
 
+[MyAnimeList API](https://myanimelist.net)
+
 <br/>
 
 Code Credit:
@@ -121,6 +161,8 @@ Code Credit:
 All starting code was provided by: Trilogy Education Services, LLC, a 2U, Inc. brand.
 
 [Build A Realtime Chat App In ReactJS and NodeJS | Socket.io Tutorial - Pedro Tech](https://youtu.be/NU-HfZY3ATQ)
+
+[Ultimate Tinder Clone | MongoDB | Authentication | Cookies | Chat - Code with Ania Kubów](https://www.youtube.com/watch?v=Q70IMS-Qnjk&t=15520s)
 
 <br/>
 
