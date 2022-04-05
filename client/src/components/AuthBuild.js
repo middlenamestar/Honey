@@ -2,6 +2,9 @@ import { useState } from "react"
 import axios from "axios"
 import {useNavigate} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
+import { Button } from 'react-bootstrap';
+
+
 const AuthBuild = ({setShowBuild, isSignUp }) => {
     const [ email, setEmail ] = useState(null)
     const [ password, setPassword ] = useState(null)
@@ -14,8 +17,6 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
     const handleClick = () => {
         setShowBuild(false)
     }
-
-    
     
     const handleSubmitLocal = async (event) => {
         event.preventDefault()
@@ -46,42 +47,53 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
         }
     }
     return (
-        <div className="authBuild">
-            <div className="closeText" onClick={handleClick}>Close</div>
-            <h2>{isSignUp ? 'Create Account' : 'Log In' }</h2>
-            <p>This is a privacy/data warning</p>
-            <form onSubmit={handleSubmitLocal}>
-                <input
-                    type='email'
-                    id='email'
-                    name='email'
-                    placeholder="email"
-                    required={true}
-                    onChange={(event) => setEmail(event.target.value)}
-                />
-                <input
-                    type='password'
-                    id='password'
-                    name='password'
-                    placeholder="password"
-                    required={true}
-                    onChange={(event) => setPassword(event.target.value)}
-                />      
-                {isSignUp && <input
-                    type='password'
-                    id='passwordValidate'
-                    name='passwordValidate'
-                    placeholder="Confirm Password"
-                    required={true}
-                    onChange={(event) => setValidatePassword(event.target.value)}
-                />}
-                <br/>
-                <input className="secondaryBtn" type="submit"/>
-                <p>{error}</p>                          
-            </form>
+        <>
+            <div>
 
-        </div>
+                <h5>{isSignUp ? 'Create Account' : 'Login' }</h5>
+
+                <form onSubmit={handleSubmitLocal}>
+                    <input
+                        className="form-control"
+                        type='email'
+                        id='email'
+                        name='email'
+                        placeholder="email"
+                        required={true}
+                        onChange={(event) => setEmail(event.target.value)}
+                    />
+                    <input
+                        className="form-control"
+                        type='password'
+                        id='password'
+                        name='password'
+                        placeholder="password"
+                        required={true}
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                    {isSignUp && <input
+                        className="form-control"
+                        type='password'
+                        id='passwordValidate'
+                        name='passwordValidate'
+                        placeholder="Confirm Password"
+                        required={true}
+                        onChange={(event) => setValidatePassword(event.target.value)}
+                    />}
+
+                    <input className="" type="submit"/>
+
+                    <p>{error}</p>
+
+                </form>
+
+                <div className="my-2">
+                    <p onClick={handleClick}>Close</p>
+                </div>
+
+            </div>
+        </>
     ) 
-}
+};
 
-export default AuthBuild
+export default AuthBuild;

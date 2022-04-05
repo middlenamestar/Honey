@@ -1,34 +1,34 @@
-:root {
+/* :root {
     font-size: 10px;
-}
+} */
 
-*,
+/* *,
 *::before,
 *::after {
     box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
     font-family: "Open Sans", Arial, sans-serif;
     min-height: 100vh;
     background-color: #fafafa;
     color: #262626;
     padding-bottom: 3rem;
-}
+} */
 
-img {
+/* img {
     display: block;
     width: 100%;
     height:50%;
-}
+} */
 
-.container {
+/* .container {
     max-width: 93.5rem;
     margin: 0 auto;
     padding: 0 2rem;
-}
+} */
 
-.btn {
+/* .btn {
     display: inline-block;
     font: inherit;
     background: none;
@@ -40,11 +40,11 @@ img {
 
 .btn:focus {
     outline: 0.5rem auto #4d90fe;
-}
+} */
 
 /* Profile Section */
 
-.profile {
+/* .profile {
     padding: 5rem 0;
 }
 
@@ -127,11 +127,11 @@ img {
 .profile-stat-count,
 .profile-edit-btn {
     font-weight: 600;
-}
+} */
 
 /* Gallery Section */
 
-.gallery {
+/* .gallery {
     display: flex;
     flex-wrap: wrap;
     margin: -1rem -1rem;
@@ -152,14 +152,14 @@ img {
     width: 100%;
     height: 90%;
     object-fit:contain;
-}
+} */
 
 /* Loader */
 
 
 /* Media Query */
 
-@media screen and (max-width: 40rem) {
+/* @media screen and (max-width: 40rem) {
     .profile {
         display: flex;
         flex-wrap: wrap;
@@ -237,8 +237,4 @@ img {
     .profile-stat-count {
         display: block;
     }
-}
-
-
-
-
+} */
