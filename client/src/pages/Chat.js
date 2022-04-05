@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-//import ScrollToBottom from "react-scroll-to-bottom";
-//import ReactScrollableFeed from 'react-scrollable-feed'
-//import { scroller } from "react-scroll";
+import { Container, Row, Col, Button } from 'react-bootstrap';
+
+const styles = {
+  bg: {
+    backgroundColor: "white"
+  }
+}
 
 
 const Chat = ({ socket, username, room }) => {
@@ -46,20 +50,21 @@ const Chat = ({ socket, username, room }) => {
   }, [socket]);
 
   return (
-    <div className="chat-window">
-      <div className="chat-header">
-        <p>Live Chat</p>
-        <p className="room-id">Room ID #: {room}</p>
-      </div>
+    <div className="chat-window py-3 px-3">
+
+      <h5 className="text-muted">Say hello...</h5>
+
+      <p>you're in room {room}</p>
+
       <div className="chat-body">
-        <div className="message-container" >
+        <div className="message-container">
           {messageList.map((messageContent) => {
-            return (
-              <div
-                key={messageContent.time}
-                className="message"
-                id={username === messageContent.author ? "you" : "other"}
-              >
+              return (
+                <div
+                  key={messageContent.time}
+                  className="message"
+                  id={username === messageContent.author ? "you" : "other"}
+                >
                 <div>
                   <div className="message-content">
                     <p>{messageContent.message}</p>
@@ -70,24 +75,28 @@ const Chat = ({ socket, username, room }) => {
                   </div>
                 </div>
               </div>
-            );
+              );
           }, scrollToBottom())}
         </div>
       </div>
+
       <div className="chat-footer">
+
         <input
           type="text"
           value={currentMessage}
-          placeholder="Hey..."
+          placeholder="Type your message"
+          className="form-control"
           onChange={(event) => {
             setCurrentMessage(event.target.value);
           }}
           onKeyPress={(event) => {
             event.key === "Enter" && sendMessage();
-            
           }}
         />
-        <button onClick={sendMessage}>&#9658;</button>
+
+        <Button variant="dark" className="my-1" onClick={sendMessage}>➢</Button>
+
       </div>
     </div>
   );
