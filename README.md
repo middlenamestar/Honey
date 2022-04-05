@@ -1,9 +1,9 @@
-# Honey 🍯
+# Honey 🍯🍈
 
 <br/>
 
 ## Project Description
-This application is to help anime lovers find a connection. 
+This application is to help anime lovers find a connection. Anime is a popular topic of discussion, 
 
 
 <br/>

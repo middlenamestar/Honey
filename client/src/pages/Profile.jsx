@@ -108,7 +108,7 @@ const Profile = () => {
                                 <h5>My anime list</h5>
                             </Row>
 
-                            <Row lg={3} className="text-center">
+                            <Row xl={4} lg={3} md={2} sm={2} xs={2} className="text-center">
                                 {userAnime.map((items)=>{
                                     return (
                                         <Col className="my-2" tabIndex="0" key={items.node.id}>
