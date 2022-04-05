@@ -5,15 +5,17 @@ import { useCookies } from "react-cookie";
 import {useNavigate} from 'react-router-dom';
 import 'animate.css';
 import ReactPlayer from 'react-player';
+import { isTrivialHref } from "@restart/ui/esm/Anchor";
 
 
 const Home = () => {
     const [showBuild, setShowBuild] = useState(false);
     const [isSignUp, setIsSignUp] = useState(true);
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
+    const [showCreate, setshowCreate] = useState(false)
 
     // building with dummy authToken, change true/false affect button text/functionality?
-    const authToken = cookies.authToken
+    const authToken = cookies.AuthToken
 
     // create account handleclick.
     const handleClick = () => {
@@ -34,16 +36,18 @@ const Home = () => {
     const LogOuthandleClick  =() =>{
         removeCookie('UserId', cookies.UserId);
         removeCookie('AuthToken', cookies.AuthToken);
+        window.location.reload()
         navigate('/');
-    };
+    }; console.log('authToken', authToken)
 
     const loginFlip = () =>{
         if(!authToken) {
             return true;
+            
         } else {
             return false;
         }
-    };
+    };console.log('login', loginFlip())
 
     return (
         <>
@@ -73,13 +77,14 @@ const Home = () => {
                         <h2 className="animate__animated animate__fadeIn animate__delay-5s animate__slower">A new dating app for anime lovebirds</h2>
 
                         {/* CREATE ACCOUNT BUTTON */}
-                        <button className="animate__animated animate__fadeIn animate__delay-5s animate__slower" onClick={handleClick} disabled={showBuild}>
+                        {loginFlip() ? <button className="animate__animated animate__fadeIn animate__delay-5s animate__slower" onClick={handleClick} disabled={showBuild}>
                                 {/* if user is logged in render LOG OUT button, else, render Create Account button. */}
-                                {authToken ? 'Log Out' : 'Create Account'}
-                        </button>
+                                {/* {authToken ? 'Log Out' : 'Create Account'} */} Create Account
+        
+                        </button> : ""}
 
                         {/* LOGIN BUTTON */}
-                        {loginFlip()?  <button 
+                        {loginFlip() ?  <button 
                             className="animate__animated animate__fadeIn animate__delay-5s animate__slower"
                             onClick={handleClickLogin}
                             disabled={showBuild}
@@ -87,8 +92,7 @@ const Home = () => {
                             className="animate__animated animate__fadeIn animate__delay-5s animate__slower" 
                             onClick={LogOuthandleClick}
                             disabled={showBuild}
-                            >Log out
-                        </button>}
+                            >Log out</button>}
 
                         {showBuild && (
                             <AuthBuild setShowBuild={setShowBuild} setIsSignUp={setIsSignUp} isSignUp={isSignUp}/>
