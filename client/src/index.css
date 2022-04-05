@@ -6,9 +6,9 @@ body {
   height: 100%;
 }
 
-/* ::selection {
+::selection {
   background-color: #e9509c;
-} */
+}
 
 #body {
   background-color: #F4EFDC;
