@@ -116,12 +116,17 @@ router.route('/user').get(async(req,res) => {
 //--------------------- GetUserAnime Routes ------------------------
 router.route('/userAnime').get(async(req,res) => {
     const getMalData = async (req,res) =>{
+        try{
         const ApiResponse = await axios.get(`https://api.myanimelist.net/v2/users/${req.query.malUser}/animelist?limit=100`,{
             headers: {
                 'X-MAL-CLIENT-ID': '0969c704ebfcb780acbeb8f07e66e05d',
               }
         })
-        res.send(ApiResponse.data.data)
+        res.send(ApiResponse.data.data)}
+        catch(err){
+            console.log("thisisaDifferentError")
+            res.send([])
+        }
     }
     try {  
         getMalData(req,res)

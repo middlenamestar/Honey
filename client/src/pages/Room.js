@@ -5,7 +5,7 @@ import Chat from "./Chat";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 // server for backend
-const socket = io.connect('http://localhost:3001');
+const socket = io.connect('/');
 
 const styles = {
     border: {

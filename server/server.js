@@ -12,7 +12,7 @@ const http = require("http");
 const {Server} = require("socket.io")
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://p3honey.herokuapp.com/",
     
   })
 )
@@ -20,7 +20,7 @@ app.use(
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://p3honey.herokuapp.com/",
     methods: ["GET", "POST"]
   },
 });
@@ -72,8 +72,8 @@ app.post("/create-checkout-session", async (req, res) => {
           quantity: item.quantity,
         }
       }),
-      success_url: `${process.env.CLIENT_URL}/success`,
-      cancel_url: `${process.env.SERVER_URL}/cancel`,
+      success_url: `${process.env.URL}/success`,
+      cancel_url: `${process.env.URL}/cancel`,
     })
     res.json({ url: session.url })
   } catch (e) {
@@ -83,7 +83,7 @@ app.post("/create-checkout-session", async (req, res) => {
 })
 
 app.get("/cancel", (req,res) => { 
-  res.redirect("http://localhost:3000/donationsPage")
+  res.redirect("/donationsPage")
 })
 
 //------------------------------------------- End of Strip tings -------------------------------------//
@@ -113,9 +113,9 @@ app.get('/', (req, res) => {
 // })
 
 // 404
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// })
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+})
 
 db.once('open', () => {
   server.listen(PORT, () => {
