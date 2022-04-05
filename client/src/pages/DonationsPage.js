@@ -1,5 +1,7 @@
 import React, { Component,  useState } from 'react'
-import Nav from '../components/Nav';
+import Navigation from '../components/Nav';
+// import '../styles/donations.css'
+import { Button } from 'react-bootstrap';
 
 const  DonationsPage = () =>{
   const [count, setCount] = useState(1);
@@ -35,30 +37,38 @@ const  DonationsPage = () =>{
       })
   }
     return (
-      <div>
-        <Nav/>
-          <h1>Buy us a Coffee Maybe? (Donate $5)</h1>
+      <>
+        <Navigation/>
 
-          <h2>Number of Coffees:{count}</h2>
-          <button
-        type="button"
-        className="btn btn-primary"
-        onClick={handleDecrement}
-      >Decrement</button>
-          <button
-        type="button"
-        className="btn btn-primary"
-        onClick={handleIncrement}
-      >
-        Increment
-      </button>
+        <div className='container my-3'>
 
-<hr/>
-          <button onClick={handleFormSubmit}>Yes, I would Like to buy you guys {count} Coffee(s)</button>
-          
-      </div>
+          <h2>Wanna buy us a coffee, or two? ~(donate 5$ ^o^)~</h2>
+
+          <h4>Number of Coffees: {count}</h4>
+
+          <Button
+            variant="outline-dark"
+            type="button"
+            className=""
+            onClick={handleIncrement}>
+            Add
+          </Button>
+          {' '}
+          <Button
+            variant="outline-dark"
+            type="button"
+            className=""
+            onClick={handleDecrement}
+          >Take Away</Button>
+
+          <hr/>
+
+          <Button variant="dark" onClick={handleFormSubmit}>Yes, I would like to buy you guys {count} coffee(s)</Button>
+
+        </div>
+      </>
     )
 
 }
 
-export default DonationsPage
+export default DonationsPage;
