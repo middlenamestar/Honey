@@ -207,6 +207,9 @@ nav .navItem a{
 
 .chat-body {
   height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
 }
 
 .chat-window {
