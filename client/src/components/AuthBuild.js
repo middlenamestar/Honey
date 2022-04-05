@@ -50,7 +50,11 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
         <>
             <div>
 
-                <h5>{isSignUp ? 'Create Account' : 'Login' }</h5>
+                <h5 className="mb-4 authHead">{isSignUp ? 'Create Account' : 'Login' }
+                    <span>
+                        <p className="closeBtn" onClick={handleClick}>𝚡</p>
+                    </span>
+                </h5>
 
                 <form onSubmit={handleSubmitLocal}>
                     <input
@@ -81,15 +85,11 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
                         onChange={(event) => setValidatePassword(event.target.value)}
                     />}
 
-                    <input className="" type="submit"/>
-
                     <p>{error}</p>
 
-                </form>
+                    <input className="my-2 btn" type="submit"/>
 
-                <div className="my-2">
-                    <p onClick={handleClick}>Close</p>
-                </div>
+                </form>
 
             </div>
         </>

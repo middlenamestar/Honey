@@ -42,9 +42,9 @@ const  DonationsPage = () =>{
 
         <div className='container my-3'>
 
-          <h2>Wanna buy us a coffee, or two? ~(donate 5$ ^o^)~</h2>
+          <h2>Wanna buy us a coffee, or two? <span className='lead text-muted'>~(donate $5 each coffee ^o^)~</span></h2>
 
-          <h4>Number of Coffees: {count}</h4>
+          <h4># of Coffees: {count}</h4>
 
           <Button
             variant="outline-dark"

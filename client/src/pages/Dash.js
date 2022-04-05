@@ -1,8 +1,9 @@
-import Nav from "../components/Nav"
+import Navigation from "../components/Nav"
 import {useEffect, useState} from 'react'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
 const Dash = () => {
     const [user, setUser] = useState(null)
@@ -65,37 +66,53 @@ const Dash = () => {
         window.location.reload()
     }
 
-
-
     return (
         <>
-        <Nav/>
-        { user &&
-        <div className="dashboard">
-            <div className='match-card' user={user}>
-                <h2 className='match-header'>Matched with: {user?.[matchNumber].username}</h2>
-                
-                {user?.[matchNumber].imageURL ? <img src={user?.[matchNumber].imageURL} alt="Profile picture of User" /> : <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />}
-                <p> {user?.[matchNumber].bio} </p>
-                <h3>These are some of my liked Anime: </h3>
-                    {user[matchNumber].animeTitles.map((items)=>{ 
-                        return(<p>{items}</p>)
-                        
-                    })}
-                
-                
-                
-                
+            <Navigation/>
 
-                <div className='match-buttons'>
-                    <button className='dislike' onClick={ondislike}>Dislike</button>
-                    <button className='like' onClick={onlike}>Like</button>
-                </div>
-            </div>
-        </div>
-    }
+                <Container className="my-4">
+                    <Row className="justify-content-center">
+
+                        <Card style={{ width: '24rem' }}>
+                            { user &&
+                                <div user={user}>
+
+                                    {/* render profile pic */}
+                                    {user?.[matchNumber].imageURL ?
+                                        <Card.Img className="my-2" variant="top" src={user?.[matchNumber].imageURL} alt="profile pic"/> : <Card.Img className="my-2" variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                                        />
+                                    }
+
+                                    <Card.Body>
+
+                                    <Card.Title>You matched with:</Card.Title>
+
+                                    <Card.Text>
+                                        <h3>{user?.[matchNumber].username}</h3>
+
+                                        <p>{user?.[matchNumber].bio}</p>
+
+                                        <h5>Currently Watching: </h5>
+                                            {user[matchNumber].animeTitles.map((items)=>{ 
+                                                return(<p>{items}</p>)
+                                                
+                                            })}
+                                    </Card.Text>
+
+                                    <div className='match-buttons'>
+                                        <Button variant="outline-dark" className='like' onClick={onlike}>Match</Button>
+                                        {" "}
+                                        <Button variant="outline-dark" className='dislike' onClick={ondislike}>Umm.. Next!</Button>
+                                    </div>
+
+                                    </Card.Body>
+                                </div>
+                            }
+                    </Card>
+                </Row>
+            </Container>
         </>
     ) 
-}
+};
 
-export default Dash
+export default Dash;
