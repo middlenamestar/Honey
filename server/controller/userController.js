@@ -1,6 +1,5 @@
 const { User, Post } = require('../models');
-const axios = require("axios");
-
+const axios = require("axios")
 // Not sure how to incorporate messages - added to getSingleUser but not sure if everyone can see it??
 // how is matches getting added? 
 let thisisaSwitch
@@ -88,6 +87,8 @@ module.exports = {
   async onBoarding(req, res, formData) {
     //   console.log(req.params)
     //   console.log(req.body)
+    let catTitleData = [];
+    try{
     const ApiResponse = await axios.get(
       `https://api.myanimelist.net/v2/users/${formData.malUsername}/animelist?limit=100`,
       {
@@ -96,9 +97,11 @@ module.exports = {
         },
       }
     );
+    
     let TitleData = [];
-    let catTitleData = [];
-    ApiResponse.data.data.map((item) => {
+    if(ApiResponse.status===404){
+      catTitleData = [];
+    }else{ApiResponse.data.data.map((item) => {
       TitleData.push(item.node.title);
     });
     //console.log(TitleData)
@@ -113,6 +116,9 @@ module.exports = {
     }
     for (var j = 0; TitleData.length < 5 ? j < TitleData.length : j < 5; j++) {
       catTitleData.push(TitleData[j]);
+    }}
+    }catch(err){
+      console.log('thisis an error')
     }
     return User.findOneAndUpdate(
       { ManmadeID: formData.user_id },
@@ -137,7 +143,7 @@ module.exports = {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err,"thisisiT");
         res.status(500).json(err);
       });
   },
