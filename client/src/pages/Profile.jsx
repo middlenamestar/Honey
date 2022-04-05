@@ -41,7 +41,7 @@ const Profile = () => {
 
     const getUserAnime = async (malUser) => {
         try{
-            const response = await axios.get('http://localhost:3001/userAnime',{
+            const response = await axios.get('/userAnime',{
                 params:{malUser}
             })
             setUserAnime(response.data)
