@@ -61,29 +61,33 @@ const Home = () => {
 
                         <h2 className="animate__animated animate__fadeIn animate__delay-2s animate__slower">hanī: ハニー</h2>
 
-                        <div className="animate__animated animate__fadeIn animate__delay-3s animate__slower">
+                        <div className="animate__animated animate__fadeIn animate__delay-3s animate__slower player-wrapper px-5 my-3">
                             <ReactPlayer
                                 url='https://youtu.be/Eq6EYcpWB_c'
+                                className='react-player'
                                 volume='null'
                                 muted='true'
                                 playing='true'
                                 loop='true'
+                                width='100%'
+                                height='100%'
                             />
                         </div>
 
-                        <h2 className="animate__animated animate__fadeIn animate__delay-4s animate__slower">A new dating app for anime lovebirds</h2>
+                        <h2 className="animate__animated animate__fadeIn animate__delay-4s animate__slower mt-4">A new dating app for anime lovebirds</h2>
 
                         {/* CREATE ACCOUNT BUTTON */}
-                        {loginFlip() ? <button className="animate__animated animate__fadeIn animate__delay-4s animate__slower" onClick={handleClick} disabled={showBuild}>
+                        {loginFlip() ? <Button variant="dark" className="animate__animated animate__fadeIn animate__delay-4s animate__slower my-4" onClick={handleClick} disabled={showBuild}>
                             Create Account
-                        </button> : ""}
-
+                        </Button> : ""}
+                        {"  "}
                         {/* LOGIN BUTTON */}
-                        {loginFlip() ?  <button 
-                            className="animate__animated animate__fadeIn animate__delay-5s animate__slower"
+                        {loginFlip() ?  <Button 
+                            variant="dark"
+                            className="animate__animated animate__fadeIn animate__delay-4s animate__slower my-4"
                             onClick={handleClickLogin}
                             disabled={showBuild}
-                            >Log in</button> : ""}
+                            >Login</Button> : ""}
 
                         {showBuild && (
                             <AuthBuild setShowBuild={setShowBuild} setIsSignUp={setIsSignUp} isSignUp={isSignUp}/>
