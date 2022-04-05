@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
 
 const Dash = () => {
     const [user, setUser] = useState(null)
@@ -70,17 +70,18 @@ const Dash = () => {
         <>
             <Navigation/>
 
-                <Container className="my-4">
+                <Container className="my-2">
                     <Row className="justify-content-center">
 
-                        <Card style={{ width: '24rem' }}>
+                        <Card style={{ width: '24rem', borderRadius: '17px' }} className="my-3">
                             { user &&
                                 <div user={user}>
 
                                     {/* render profile pic */}
                                     {user?.[matchNumber].imageURL ?
-                                        <Card.Img className="my-2" variant="top" src={user?.[matchNumber].imageURL} alt="profile pic"/> : <Card.Img className="my-2" variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                                        />
+                                        <Card.Img className="my-2" variant="top" src={user?.[matchNumber].imageURL} alt="profile pic"/>
+                                        :
+                                            <Card.Img className="my-2" variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"/>
                                     }
 
                                     <Card.Body>
@@ -88,7 +89,7 @@ const Dash = () => {
                                     <Card.Title>You matched with:</Card.Title>
 
                                     <Card.Text>
-                                        <h3>{user?.[matchNumber].username}</h3>
+                                        <h3 style={{ color: 'rgb(106, 106, 162)' }}>{user?.[matchNumber].username}</h3>
 
                                         <p>{user?.[matchNumber].bio}</p>
 
