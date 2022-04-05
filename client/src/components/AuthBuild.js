@@ -48,7 +48,7 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
     }
     return (
         <>
-            <div>
+            <div className="my-3">
 
                 <h5 className="mb-4 authHead">{isSignUp ? 'Create Account' : 'Login' }
                     <span>
@@ -87,7 +87,7 @@ const AuthBuild = ({setShowBuild, isSignUp }) => {
 
                     <p>{error}</p>
 
-                    <input className="my-2 btn" type="submit"/>
+                    <input className="mb-4 btn" type="submit"/>
 
                 </form>
 
