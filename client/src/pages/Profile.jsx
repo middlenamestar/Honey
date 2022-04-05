@@ -24,7 +24,7 @@ const Profile = () => {
  
     const getUserData= async () => {
         try{
-            const response = await axios.get('http://localhost:3001/user', {
+            const response = await axios.get('/user', {
                 params:{userId}
             })
                 setUser(response.data)
