@@ -1,30 +1,35 @@
-/* Extend to fit entirety of page */
 html {
-  margin: 0;
-  padding: 0;
+  height: 100%;
 }
-
-/* 
-* {
-  font-family: /* IDK */
-
 
 body {
-  margin: 0;
-  padding: 0;
-  text-align: center;
+  height: 100%;
 }
 
+::selection {
+  background-color: #e9509c;
+}
+
+#body {
+  background-color: #F4EFDC;
+  /* #F5EEDC, #F2EFE9 */
+  color: #281005;
+  font-family: 'Raleway', sans-serif;
+  height: 100%;
+}
+
+
+
 /* -----------------START HOMEPAGE STYLING----------------- */
-.primaryBtn {
+/* .primaryBtn {
   color: white;
   text-transform: uppercase;
   font-size: large;
-  background: rgb(61, 61, 170); /* make gradient like tinders? */
-  padding: 15px 30px;
+  background: rgb(61, 61, 170); make gradient like tinders? */
+  /* padding: 15px 30px;
   border-radius: 25px;
-}
-
+} */
+/* 
 .primaryBtn {
   cursor: pointer;
 }
@@ -47,17 +52,17 @@ body {
 .primaryTagLine {
   font-size: 100px;
   color: rgba(244,213,137,255)
-}
+} */
 /* -----------------END HOMEPAGE STYLING----------------- */
 
 
 /* -----------------START NAVBAR STYLING----------------- */
-nav {
+/* nav {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; */
   /* border: 5px solid red */
-}
+/* }
 
 nav .logoNavContainer {
   display: flex;
@@ -101,17 +106,17 @@ nav .navBar {
 
 nav .navItem a{
   text-decoration: none;
-  color: rgba(244,213,137,255);
+  color: rgba(244,213,137,255); */
   /* border: 1px solid red; */
-  padding: 8px;
-}
+  /* padding: 8px;
+} */
 /* -----------------END NAVBAR STYLING----------------- */
 
 
 /* -----------------START AuthBuild STYLING----------------- */
-.authBuild {
+/* .authBuild { */
   /* position: absolute; */
-  top: 275px;
+  /* top: 275px;
   margin-left: auto;
   margin-right: auto;
   max-width: 350px;
@@ -152,14 +157,14 @@ nav .navItem a{
   padding: 8px;
   margin: 8px;
   font-size: 20px;
-}
+} */
 
 /* -----------------END AUTHBUILD STYLING----------------- */
 
 
 /* -----------------START CHAT STYLING----------------- */
-.Room {
-  max-width: 300px;
+/* .Room {
+  max-width: 500px;
   height: 400px;
   margin-right: auto;
   margin-left: auto;
@@ -172,13 +177,13 @@ nav .navItem a{
   overflow-x: hidden;
   scroll-snap-type: y proximity;
   
-  position: relative;
+  position: relative; */
   
   /* box-shadow: 0 0 0 5px hsla(333, 72%, 42%, 0.937); */
-}
+/* } */
 
 
-.joinChat {
+/* .joinChat {
   display: flex;
   flex-direction: column;
   max-width: 250px;
@@ -187,9 +192,9 @@ nav .navItem a{
   vertical-align: middle;
   margin-top: auto;
   margin-bottom: auto;
-}
+} */
 
-.joinChatExtra {
+/* .joinChatExtra {
   margin-bottom: 10%;
 }
 
@@ -198,11 +203,11 @@ nav .navItem a{
   color: white;
   height: 50px;
   border-radius: 15px;
-}
-
-/* .chat-body {
-  height: 400px;
 } */
+
+.chat-body {
+  height: 400px;
+}
 
 .chat-window {
   height: 400px;
@@ -210,15 +215,13 @@ nav .navItem a{
   /* overflow-anchor: none; */
 }
 
-/* .message-container {
+.message-container {
   overscroll-behavior-y: contain;
   scroll-snap-type: y proximity;
   display: flex; 
   flex-direction: column;
   scroll-snap-align: end;
-} */
-
-
+}
 
 .message {
   padding: 10px;
@@ -230,7 +233,6 @@ nav .navItem a{
 .message-content {
   overflow-wrap: break-word;
   word-break: break-word;
-  
 }
 
 #you {
@@ -254,7 +256,7 @@ nav .navItem a{
 
 #other .message-content {
   justify-content: flex-start;
-  background-color: grey;
+  background-color: rgb(184, 184, 184);
   border-radius: 5px;
 }
 
@@ -273,7 +275,7 @@ nav .navItem a{
   width: 200px;
 }
 
-.message-button {
+/* .message-button {
   background-color: black;
   color: white;
   height: 30px;
@@ -282,7 +284,7 @@ nav .navItem a{
 .room-id {
   font-size: small;
   color: grey;
-}
+} */
 
 .message-data {
   display: flex;
@@ -291,7 +293,7 @@ nav .navItem a{
 }
 
 #author {
-  margin-right: 7px
+  margin-left: 7px
 }
 
 /* -----------------END CHAT STYLING----------------- */
