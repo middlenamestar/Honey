@@ -1,5 +1,4 @@
 import { Navbar, Container, Nav, Offcanvas } from 'react-bootstrap';
-import './nav.css';
 import brand from '../images/brand.png';
 import { useCookies } from "react-cookie";
 import {useNavigate} from 'react-router-dom';
